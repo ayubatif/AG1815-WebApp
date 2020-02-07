@@ -8,14 +8,16 @@ html, body {
     background: #f2f2f2;
 }
 
+/* Everything*/
 .main-container {
     display: grid;
     grid-template-columns: auto auto auto auto;
-    grid-gap: 10px;
+    grid-gap: 1vh;
     background-color: coral;
-    padding: 5px;
+    padding: 1vw;
 }
 
+/* Title at top*/
 .banner-container {
     text-align: center;
     grid-row-start: 1;
@@ -23,9 +25,10 @@ html, body {
     grid-column-start: 1;
     grid-column-end: 5;
     background-color: cyan;
-    padding: 5px;
+    padding: 1vw;
 }
 
+/* Everything between banner and footer*/
 .content-container {
     display: grid;
     grid-row-start: 2;
@@ -33,9 +36,10 @@ html, body {
     grid-column-start: 1;
     grid-column-end: 5;
     background-color: greenyellow;
-    padding: 5px;
+    padding: 1vw;
 }
 
+/* Left includes schedule recipes and ingredients*/
 .left-container {
     text-align: center;
     grid-column-start: 1;
@@ -43,18 +47,30 @@ html, body {
     background-color: crimson;
 }
 
+/* Right includes graphs and other results*/
 .right-container {
+    margin-left: 1vw;
     text-align: center;
     grid-column-start: 2;
     grid-column-end: 2;
     background-color: salmon;
 }
 
+/* Footer*/
 .footer-container {
     grid-row-start: 3;
     grid-row-end: 3;
     grid-column-start: 1;
     grid-column-end: 5;
     background-color: grey;
-    padding: 5px;
+    padding: 1vw;
+}
+
+/* Add a breakpoint at 800px*/
+@media screen and (max-width: 800px) {
+    .right-container {
+        grid-column-start: 1;
+        grid-column-end: 1;
+        margin: 1vw 0 0 0;
+    }
 }
