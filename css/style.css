@@ -58,3 +58,13 @@ html, body {
     background-color: grey;
     padding: 5px;
 }
+
+.matrix {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-auto-rows: 1fr;
+}
+
+.matrix-element {
+    border: 0.25vw solid #000000;
+}
