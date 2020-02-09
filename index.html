@@ -13,7 +13,7 @@
     <script src="js/script.js"></script>
 </head>
 
-<body>
+<body onload="initializeMatrix(matrix)">
     <div class="main-container">
         <div class="banner-container">
             <p>Banner</p>
@@ -22,27 +22,38 @@
             <div class="left-container">
                 <p>Hello Left</p>
                 <div class="matrix">
-                    <div class="matrix-element">1</div>
-                    <div class="matrix-element">2</div>
-                    <div class="matrix-element">3</div>
-                    <div class="matrix-element">4</div>
-                    <div class="matrix-element">5</div>
-                    <div class="matrix-element">6</div>
-                    <div class="matrix-element">7</div>
-                    <div class="matrix-element">8</div>
-                    <div class="matrix-element">9</div>
-                    <div class="matrix-element">10</div>
-                    <div class="matrix-element">11</div>
-                    <div class="matrix-element">12</div>
-                    <div class="matrix-element">13</div>
-                    <div class="matrix-element">14</div>
-                    <div class="matrix-element">15</div>
-                    <div class="matrix-element">16</div>
-                    <div class="matrix-element">17</div>
-                    <div class="matrix-element">18</div>
-                    <div class="matrix-element">19</div>
-                    <div class="matrix-element">20</div>
-                    <div class="matrix-element">21</div>
+                    <div></div>
+                    <div>Mo</div>
+                    <div>Tu</div>
+                    <div>We</div>
+                    <div>Th</div>
+                    <div>Fr</div>
+                    <div>Sa</div>
+                    <div>Su</div>
+                    <div>Breakfast</div>
+                    <div onclick="changeElement(0, selected)" class="matrix-element">1</div>
+                    <div onclick="changeElement(1, selected)" class="matrix-element">2</div>
+                    <div onclick="changeElement(2, selected)" class="matrix-element">3</div>
+                    <div onclick="changeElement(3, selected)" class="matrix-element">4</div>
+                    <div onclick="changeElement(4, selected)" class="matrix-element">5</div>
+                    <div onclick="changeElement(5, selected)" class="matrix-element">6</div>
+                    <div onclick="changeElement(6, selected)" class="matrix-element">7</div>
+                    <div>Lunch</div>
+                    <div onclick="changeElement(7, selected)" class="matrix-element">8</div>
+                    <div onclick="changeElement(8, selected)" class="matrix-element">9</div>
+                    <div onclick="changeElement(9, selected)" class="matrix-element">10</div>
+                    <div onclick="changeElement(10, selected)" class="matrix-element">11</div>
+                    <div onclick="changeElement(11, selected)" class="matrix-element">12</div>
+                    <div onclick="changeElement(12, selected)" class="matrix-element">13</div>
+                    <div onclick="changeElement(13, selected)" class="matrix-element">14</div>
+                    <div>Dinner</div>
+                    <div onclick="changeElement(14, selected)" class="matrix-element">15</div>
+                    <div onclick="changeElement(15, selected)" class="matrix-element">16</div>
+                    <div onclick="changeElement(16, selected)" class="matrix-element">17</div>
+                    <div onclick="changeElement(17, selected)" class="matrix-element">18</div>
+                    <div onclick="changeElement(18, selected)" class="matrix-element">19</div>
+                    <div onclick="changeElement(19, selected)" class="matrix-element">20</div>
+                    <div onclick="changeElement(20, selected)" class="matrix-element">21</div>
                 </div>
             </div>
             <div class="right-container">
@@ -53,6 +64,11 @@
             <p>Footer</p>
         </div>
     </div>
+
+    <script>
+        var matrix = [];
+        var selected = 0;
+    </script>
 </body>
 
 </html>
