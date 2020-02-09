@@ -68,7 +68,7 @@ function initializeIngredients() {
     var ingredient_slider_values = document.getElementsByClassName("ingredient-amount-container");
 
     for (let i = 0; i < ingredient_sliders.length; i++) {
-        ingredient_slider_values[i].innerHTML = ingredient_sliders[i].value = Math.round(Math.random()*100);
+        ingredient_slider_values[i].innerHTML = ingredient_sliders[i].value = Math.ceil(Math.random()*100) % 100;
         // Update amounts on slider change
         ingredient_sliders[i].oninput = function() {
             ingredient_slider_values[i].innerHTML = this.value;
