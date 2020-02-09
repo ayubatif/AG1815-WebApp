@@ -7,9 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css\font-awesome\cssfont-awesome.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/99e38e1dcf.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
 </head>
 
@@ -21,6 +20,23 @@
         <div class="content-container">
             <div class="left-container">
                 <p>Hello Left</p>
+                <div class="search-container">
+                    <div class="search-bar" onclick="displayRecipesDropdown()">
+                        <input type="text" id="SearchInput" placeholder="ExampleRecipes..." onkeyup="filterRecipes()"/>
+                        <button class="search-button">
+                            <i id="fas-search-button" class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div id="SearchDropdown" class="hidden">
+                        <a id="null">No matching recipes..</a>
+                        <a href="#" onclick="displayRecipesDropdown()">Tomato Pizza</a>
+                        <a href="#" onclick="displayRecipesDropdown()">Chicken Pizza</a>
+                        <a href="#" onclick="displayRecipesDropdown()">Haiwaian Pizza</a>
+                    </div>
+                </div>
+                <div class="ingredients-container">
+                    <p>Tomato is an ingredient</p>
+                </div>
             </div>
             <div class="right-container">
                 <p>Hello Right</p>
