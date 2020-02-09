@@ -54,16 +54,14 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: moccasin;
-    border-radius: 1vw;
     padding: 1vw;
 }
 
 /* search input as well as dropButton*/
 .search-bar {
     background-color: #f9f9f9;
-    border: 0.2em solid #0ff;
-    border-radius: 0.5vw 0.5vw 0 0;
+    border: 0.25em solid #47c3d3;
+    border-radius: 0.5vw;
 }
 
 /* Search input*/
@@ -91,7 +89,7 @@ body {
     border: 0;
     padding: 0.5vh;
     padding-top: 1vh;
-    color: #0ff;
+    color: #47c3d3;
 }
 
 /* Recipes container to drop down*/
@@ -99,7 +97,7 @@ body {
     position: relative;
     overflow: auto;
     background-color: #f9f9f9;
-    border: 0.2em solid #0ff;
+    border: 0.2em solid #47c3d3;
     border-radius: 0 0 0.5vw 0.5vw;
     padding-top: 1vh;
     z-index: 1;
@@ -134,10 +132,78 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: plum;
-    border-radius: 1vw;
     padding: 1vw;
+}
+
+.ingredient-container {
+    position: relative;
+    display: flex;
+    background-color: #f9f9f9;
+    border: 0.25em solid #47c3d3;
+    border-radius: 0.5vw;
+    padding: 0.5vh;
+    margin-top: 1vh;
+    z-index: 1;
+}
+
+.ingredient-name-container {
+    text-align: left;
+    display: inline-block;
+    width: 20%;
+    background-color: #f9f9f9;
+    border-radius: 0.5vw;
+    padding: 1vh;
+    z-index: 1;
+}
+
+/* Ingredients Slider*/
+.ingredient-slider-container {
     margin-top: 1vw;
+    width: 70%;
+}
+
+.ingredient-slider {
+    width: 75%;
+    -webkit-appearance: none;
+    height: 1vw;
+    border-radius: 0.5vw;  
+    background: #7c7c7c;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+  
+.ingredient-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 2vh;
+    height: 2vw;
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 50%; 
+    background: #47c3d3;
+    cursor: pointer;
+}
+  
+.ingredient-slider::-moz-range-thumb {
+    width: 2vh;
+    height: 2vw;
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 50%;
+    background: #47c3d3;
+    cursor: pointer;
+}
+
+.ingredient-amount-container {
+    text-align: left;
+    display: inline-block;
+    width: 10%;
+    background-color: #f9f9f9;
+    border-radius: 0.5vw;
+    padding: 1vh;
+    z-index: 1;
 }
 
 /* Right includes graphs and other results*/

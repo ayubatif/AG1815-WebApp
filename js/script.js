@@ -3,12 +3,8 @@
  */
 function displayRecipesDropdown() {
   document.getElementById("SearchDropdown").classList.toggle("hidden");
-  document
-    .getElementById("fas-search-button")
-    .classList.toggle("fa-chevron-down");
-  document
-    .getElementById("fas-search-button")
-    .classList.toggle("fa-chevron-up");
+  document.getElementById("fas-search-button").classList.toggle("fa-chevron-down");
+  document.getElementById("fas-search-button").classList.toggle("fa-chevron-up");
 }
 
 /**
@@ -20,7 +16,7 @@ function filterRecipes() {
   a = div.getElementsByTagName("a");
   input = document.getElementById("SearchInput");
   filter = input.value.toUpperCase();
-  for (i = 0, n = 0; i < a.length; i++) {
+  for (let i = 0, n = 0; i < a.length; i++) {
     txtValue = a[i].textContent || a[i].innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       a[i].style.display = "";
@@ -62,4 +58,29 @@ function changeElement(toChange, selected) {
   matrixElements[selected].style.backgroundColor = matrixElements[toChange].style.backgroundColor;
   matrixElements[toChange].style.backgroundColor = "#ffffff";
   return toChange;
+}
+
+/* 
+* Init ingredients' amounts and sliders
+*/
+function initializeIngredients() {
+    var ingredient_sliders = document.getElementsByClassName("ingredient-slider");
+    var ingredient_slider_values = document.getElementsByClassName("ingredient-amount-container");
+
+    for (let i = 0; i < ingredient_sliders.length; i++) {
+        ingredient_slider_values[i].innerHTML = ingredient_sliders[i].value = Math.round(Math.random()*100);
+        // Update amounts on slider change
+        ingredient_sliders[i].oninput = function() {
+            ingredient_slider_values[i].innerHTML = this.value;
+        } 
+    }
+}
+
+/**
+ * Update meal on relevant changes
+ */
+function updateMeal() {
+    // work in progress
+    console.log(this);
+    return null;
 }

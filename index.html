@@ -12,7 +12,7 @@
     <script src="js/script.js"></script>
 </head>
 
-<body onload="initializeMatrix(matrix, selected)">
+<body onload="initializeMatrix(matrix, selected); initializeIngredients()">
     <div class="main-container">
         <div class="banner-container">
             <p>UFC [NAME SUBJECT TO CHANGE]</p>
@@ -63,13 +63,45 @@
                     </div>
                     <div id="SearchDropdown" class="hidden">
                         <a id="null">No matching recipes..</a>
-                        <a href="#" onclick="displayRecipesDropdown()">Tomato Pizza</a>
-                        <a href="#" onclick="displayRecipesDropdown()">Chicken Pizza</a>
-                        <a href="#" onclick="displayRecipesDropdown()">Haiwaian Pizza</a>
+                        <a href="#" onclick="displayRecipesDropdown(); meal = updateMeal()">Tomato Pizza</a>
+                        <a href="#" onclick="displayRecipesDropdown(); meal = updateMeal()">Chicken Pizza</a>
+                        <a href="#" onclick="displayRecipesDropdown(); meal = updateMeal()">Haiwaian Pizza</a>
                     </div>
                 </div>
                 <div class="ingredients-container">
-                    <p>Tomato is an ingredient</p>
+                    <div class="ingredient-container">
+                        <div class="ingredient-name-container">
+                            <p class="ingredient-name">Tomato</p>
+                        </div>
+                        <div class="ingredient-slider-container">
+                            <input type="range" min="1" max="100" value="50" class="ingredient-slider">
+                        </div>
+                        <div class="ingredient-amount-container">
+                            <p class="ingredient-amount">5</p>
+                        </div>
+                    </div>
+                    <div class="ingredient-container">
+                        <div class="ingredient-name-container">
+                            <p class="ingredient-name">Cheese</p>
+                        </div>
+                        <div class="ingredient-slider-container">
+                            <input type="range" min="1" max="100" value="50" class="ingredient-slider">
+                        </div>
+                        <div class="ingredient-amount-container">
+                            <p class="ingredient-amount">5</p>
+                        </div>
+                    </div>
+                    <div class="ingredient-container">
+                        <div class="ingredient-name-container">
+                            <p class="ingredient-name">Meat</p>
+                        </div>
+                        <div class="ingredient-slider-container">
+                            <input type="range" min="1" max="100" value="50" class="ingredient-slider">
+                        </div>
+                        <div class="ingredient-amount-container">
+                            <p class="ingredient-amount">5</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="right-container">
@@ -84,6 +116,12 @@
     <script>
         var matrix = [];
         var selected = 0;
+        var meal = {
+            // Add more when thought of
+            recipe: null,
+            ingredients: null,
+            picture: null
+        };
     </script>
 </body>
 
