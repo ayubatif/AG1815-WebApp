@@ -11,13 +11,11 @@ function initializeMatrix(matrix)
     }
 }
 
-function changeElement(selected, current)
+function changeElement(toChange, selected)
 {
-    current = selected;
-}
-
-function debug(matrix) {
-    for (let index = 0; index < matrix.length; index++) {
-        console.log(matrix[index].recipe);
-    }
+    matrixElements = document.getElementsByClassName("matrix-element");
+    matrixElements[selected].style.backgroundColor = matrixElements[toChange].style.backgroundColor;
+    // current = toChange;
+    matrixElements[toChange].style.backgroundColor = "#ffffff";
+    return toChange;
 }

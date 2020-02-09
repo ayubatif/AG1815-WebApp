@@ -67,4 +67,5 @@ html, body {
 
 .matrix-element {
     border: 0.25vw solid #000000;
+    background-color: #47c3d3;
 }
