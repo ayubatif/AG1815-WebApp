@@ -12,7 +12,7 @@
     <script src="js/script.js"></script>
 </head>
 
-<body onload="initializeMatrix(matrix, selected)">
+<body onload="initializeMatrix(matrix)">
     <div class="main-container">
         <div class="banner-container">
             <p>UFC [NAME SUBJECT TO CHANGE]</p>
@@ -30,29 +30,29 @@
                     <div>Sa</div>
                     <div>Su</div>
                     <div>Breakfast</div>
-                    <div onclick="selected = changeElement(0, selected)" class="matrix-element">1</div>
-                    <div onclick="selected = changeElement(1, selected)" class="matrix-element">2</div>
-                    <div onclick="selected = changeElement(2, selected)" class="matrix-element">3</div>
-                    <div onclick="selected = changeElement(3, selected)" class="matrix-element">4</div>
-                    <div onclick="selected = changeElement(4, selected)" class="matrix-element">5</div>
-                    <div onclick="selected = changeElement(5, selected)" class="matrix-element">6</div>
-                    <div onclick="selected = changeElement(6, selected)" class="matrix-element">7</div>
+                    <div onclick="selected = changeElement(0, selected, matrix)" class="matrix-element">1</div>
+                    <div onclick="selected = changeElement(1, selected, matrix)" class="matrix-element">2</div>
+                    <div onclick="selected = changeElement(2, selected, matrix)" class="matrix-element">3</div>
+                    <div onclick="selected = changeElement(3, selected, matrix)" class="matrix-element">4</div>
+                    <div onclick="selected = changeElement(4, selected, matrix)" class="matrix-element">5</div>
+                    <div onclick="selected = changeElement(5, selected, matrix)" class="matrix-element">6</div>
+                    <div onclick="selected = changeElement(6, selected, matrix)" class="matrix-element">7</div>
                     <div>Lunch</div>
-                    <div onclick="selected = changeElement(7, selected)" class="matrix-element">8</div>
-                    <div onclick="selected = changeElement(8, selected)" class="matrix-element">9</div>
-                    <div onclick="selected = changeElement(9, selected)" class="matrix-element">10</div>
-                    <div onclick="selected = changeElement(10, selected)" class="matrix-element">11</div>
-                    <div onclick="selected = changeElement(11, selected)" class="matrix-element">12</div>
-                    <div onclick="selected = changeElement(12, selected)" class="matrix-element">13</div>
-                    <div onclick="selected = changeElement(13, selected)" class="matrix-element">14</div>
+                    <div onclick="selected = changeElement(7, selected, matrix)" class="matrix-element">8</div>
+                    <div onclick="selected = changeElement(8, selected, matrix)" class="matrix-element">9</div>
+                    <div onclick="selected = changeElement(9, selected, matrix)" class="matrix-element">10</div>
+                    <div onclick="selected = changeElement(10, selected, matrix)" class="matrix-element">11</div>
+                    <div onclick="selected = changeElement(11, selected, matrix)" class="matrix-element">12</div>
+                    <div onclick="selected = changeElement(12, selected, matrix)" class="matrix-element">13</div>
+                    <div onclick="selected = changeElement(13, selected, matrix)" class="matrix-element">14</div>
                     <div>Dinner</div>
-                    <div onclick="selected = changeElement(14, selected)" class="matrix-element">15</div>
-                    <div onclick="selected = changeElement(15, selected)" class="matrix-element">16</div>
-                    <div onclick="selected = changeElement(16, selected)" class="matrix-element">17</div>
-                    <div onclick="selected = changeElement(17, selected)" class="matrix-element">18</div>
-                    <div onclick="selected = changeElement(18, selected)" class="matrix-element">19</div>
-                    <div onclick="selected = changeElement(19, selected)" class="matrix-element">20</div>
-                    <div onclick="selected = changeElement(20, selected)" class="matrix-element">21</div>
+                    <div onclick="selected = changeElement(14, selected, matrix)" class="matrix-element">15</div>
+                    <div onclick="selected = changeElement(15, selected, matrix)" class="matrix-element">16</div>
+                    <div onclick="selected = changeElement(16, selected, matrix)" class="matrix-element">17</div>
+                    <div onclick="selected = changeElement(17, selected, matrix)" class="matrix-element">18</div>
+                    <div onclick="selected = changeElement(18, selected, matrix)" class="matrix-element">19</div>
+                    <div onclick="selected = changeElement(19, selected, matrix)" class="matrix-element">20</div>
+                    <div onclick="selected = changeElement(20, selected, matrix)" class="matrix-element">21</div>
                 </div>
                 <div class="search-container">
                     <div class="search-bar" onclick="displayRecipesDropdown()">
@@ -63,9 +63,9 @@
                     </div>
                     <div id="SearchDropdown" class="hidden">
                         <a id="null">No matching recipes..</a>
-                        <a href="#" onclick="displayRecipesDropdown()">Tomato Pizza</a>
-                        <a href="#" onclick="displayRecipesDropdown()">Chicken Pizza</a>
-                        <a href="#" onclick="displayRecipesDropdown()">Haiwaian Pizza</a>
+                        <a href="#" onclick="handleRecipesChange(0, selected, matrix)">Tomato Pizza</a>
+                        <a href="#" onclick="handleRecipesChange(1, selected, matrix)">Chicken Pizza</a>
+                        <a href="#" onclick="handleRecipesChange(2, selected, matrix)">Haiwaian Pizza</a>
                     </div>
                 </div>
                 <div class="ingredients-container">
