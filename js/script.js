@@ -52,6 +52,7 @@ function initializeMatrix(matrix, selected) {
   }
 
   document.getElementsByClassName("matrix-element")[0].style.backgroundColor = "#ffffff";
+  document.getElementById("phd-image").src = "./res/phd-base.png"
 }
 
 /* 

@@ -187,3 +187,10 @@ body {
     border: 0.25vw solid #000000;
     background-color: #47c3d3;
 }
+
+/* This is the PHD image */
+#phd-image {
+    width: 25vw;
+    height: 25vw;
+    background-color: #ffffff;
+}
