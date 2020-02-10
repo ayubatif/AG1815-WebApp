@@ -21,9 +21,10 @@ body {
     display: inline-block;
     position: relative;
     text-align: center;
-    background-color: cyan;
+    background-color: #47c3d3;
     width: 50%;
     left: 25%;
+    border: 0.2em solid cyan;
     border-radius: 1vw;
     padding: 1vw;
     font-size: 1.425em;
@@ -34,7 +35,7 @@ body {
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-gap: 1vh;
-    background-color: greenyellow;
+    background-color: #f2f2f2;
     min-height: 90vh;
     margin-top: 1vh;
     padding: 1vw;
@@ -44,7 +45,7 @@ body {
 .left-container {
     text-align: center;
     grid-column: 1 / 2;
-    background-color: crimson;
+    background-color: #f2f2f2;
     border-radius: 1vw;
     padding: 1vh;
 }
@@ -61,7 +62,6 @@ body {
 .search-bar {
     background-color: #f9f9f9;
     border: 0.25em solid #47c3d3;
-    border-radius: 0.5vw;
 }
 
 /* Search input*/
@@ -149,6 +149,7 @@ body {
 .ingredient-name-container {
     text-align: left;
     display: inline-block;
+    word-wrap: break-word;
     width: 20%;
     background-color: #f9f9f9;
     border-radius: 0.5vw;
@@ -178,7 +179,7 @@ body {
     -webkit-appearance: none;
     appearance: none;
     width: 2vh;
-    height: 2vw;
+    height: 2vh;
     min-width: 20px;
     min-height: 20px;
     border-radius: 50%; 
@@ -188,7 +189,7 @@ body {
   
 .ingredient-slider::-moz-range-thumb {
     width: 2vh;
-    height: 2vw;
+    height: 2vh;
     min-width: 20px;
     min-height: 20px;
     border-radius: 50%;
@@ -199,6 +200,7 @@ body {
 .ingredient-amount-container {
     text-align: left;
     display: inline-block;
+    word-wrap: break-word;
     width: 10%;
     background-color: #f9f9f9;
     border-radius: 0.5vw;
@@ -211,7 +213,7 @@ body {
     margin-left: 1vw;
     text-align: center;
     grid-column: 2 / 5;
-    background-color: salmon;
+    background-color: #f2f2f2;
     border-radius: 1vw;
     padding: 1vh;
 }
@@ -252,4 +254,11 @@ body {
 .matrix-element {
     border: 0.25vw solid #000000;
     background-color: #47c3d3;
+}
+
+/* This is the PHD image */
+#phd-image {
+    width: 25vw;
+    height: 25vw;
+    background-color: #ffffff;
 }
