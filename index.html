@@ -19,7 +19,6 @@
         </div>
         <div class="content-container">
             <div class="left-container">
-                <p>Hello Left</p>
                 <div class="matrix">
                     <div></div>
                     <div>Mo</div>
@@ -55,25 +54,26 @@
                     <div onclick="selected = changeElement(20, selected, matrix)" class="matrix-element">21</div>
                 </div>
                 <div class="search-container">
-                    <div class="search-bar" onclick="displayRecipesDropdown()">
-                        <input type="text" id="SearchInput" placeholder="ExampleRecipes..." onkeyup="filterRecipes()"/>
+                    <div class="search-bar" onclick="toggleRecipesDropdown()">
+                        <input type="text" id="SearchInput" placeholder="Example Recipes..." onkeyup="filterRecipes()" />
                         <button class="search-button">
                             <i id="fas-search-button" class="fas fa-chevron-down"></i>
                         </button>
                     </div>
                     <div id="SearchDropdown" class="hidden">
                         <a id="null">No matching recipes..</a>
-                        <a href="#" onclick="handleRecipesChange(0, selected, matrix)">Tomato Pizza</a>
-                        <a href="#" onclick="handleRecipesChange(1, selected, matrix)">Chicken Pizza</a>
-                        <a href="#" onclick="handleRecipesChange(2, selected, matrix)">Haiwaian Pizza</a>
+                        <a href="#" onclick="handleRecipesChange(0, selected, matrix)" class="dropdown-recipe">Tomato
+                            Pizza</a>
+                        <a href="#" onclick="handleRecipesChange(1, selected, matrix)" class="dropdown-recipe">Chicken
+                            Pizza</a>
+                        <a href="#" onclick="handleRecipesChange(2, selected, matrix)" class="dropdown-recipe">Haiwaian
+                            Pizza</a>
                     </div>
                 </div>
-                <div class="ingredients-container">
-                    <p>Tomato is an ingredient</p>
+                <div id="IngredientsContainer">
                 </div>
             </div>
             <div class="right-container">
-                <p>Hello Right</p>
                 <img id="phd-image"></img>
             </div>
         </div>
