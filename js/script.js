@@ -11,6 +11,34 @@ function displayRecipesDropdown() {
     .classList.toggle("fa-chevron-up");
 }
 
+/* 
+* Handles choosing recipes
+*/
+function handleRecipesChange(id, selected, matrix)
+{
+    displayRecipesDropdown();
+    handleRecipeState(id, selected, matrix);
+    handleImageChange(selected, matrix);
+}
+
+/* 
+* Inputs data into the object for that matrix element
+*/
+function handleRecipeState(id, selected, matrix)
+{
+    matrixElement = matrix[selected];
+    matrixElement.changeRecipe(id);
+    matrixElement.changePicture("./res/phd-image" + id + ".png")
+}
+
+/* 
+* Changes the image based on recipe selection
+*/
+function handleImageChange(selected, matrix)
+{
+    document.getElementById("phd-image").src = matrix[selected].picture;
+}
+
 /**
  * Filter shown recipes based on search query
  */
@@ -36,30 +64,77 @@ function filterRecipes() {
 /* 
 * Object that handles the variables of the meals of the days
 */
-var meal = {
-  // Add more when thought of
-  recipe: null,
-  ingredients: null,
-  picture: null
-};
+class Meal{
+    recipe = null; 
+    ingredients =null;
+    picture = null;
+
+    /* 
+    * Default contructor of meal object
+    */
+    constructor()
+    {
+        this.recipe = null;
+        this.ingredients = null;
+        this.picture = "./res/phd-base.png";
+    }
+
+    /* 
+    * Changes the recipe
+    */
+    changeRecipe(newRecipe)
+    {
+        this.recipe = newRecipe;
+    }
+
+    /* 
+    * Changes the ingredients *TODO*
+    */
+    changeIngredients()
+    {}
+
+    /* 
+    * Changes the picture
+    */
+    changePicture(newPicture)
+    {
+        this.picture = newPicture;
+    }
+}
 
 /* 
 * Initializes the matrix and shows the default selection
 */
-function initializeMatrix(matrix, selected) {
+function initializeMatrix(matrix) {
   for (let index = 0; index < 21; index++) {
-    matrix[index] = meal;
+    matrix[index] = new Meal();
   }
 
   document.getElementsByClassName("matrix-element")[0].style.backgroundColor = "#ffffff";
+  document.getElementById("phd-image").src = matrix[0].picture;
 }
 
 /* 
 * Changes the selections and shows a visual representaion of it.
 */
-function changeElement(toChange, selected) {
+function changeElement(toChange, selected, matrix) {
   matrixElements = document.getElementsByClassName("matrix-element");
   matrixElements[selected].style.backgroundColor = matrixElements[toChange].style.backgroundColor;
   matrixElements[toChange].style.backgroundColor = "#ffffff";
+  handleImageChange(toChange, matrix)
   return toChange;
+}
+
+/* 
+* Debug function that prints out selected and the matrix contents
+*/
+function debug(selected, matrix){
+    console.log(selected);
+
+    for (let index = 0; index < matrix.length; index++) {
+        console.log("element: " + index);
+        console.log(matrix[index].recipe);
+        console.log(matrix[index].ingredients);
+        console.log(matrix[index].picture);
+    }
 }
