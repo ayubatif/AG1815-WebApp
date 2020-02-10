@@ -10,6 +10,13 @@ function displayRecipesDropdown() {
     .getElementById("fas-search-button")
     .classList.toggle("fa-chevron-up");
 }
+ 
+function multiplyBy()
+{
+        num1 = document.getElementById("firstNumber").value;
+        num2 = document.getElementById("secondNumber").value;
+        document.getElementById("result").innerHTML = num1 * num2;
+}
 
 /**
  * Filter shown recipes based on search query
@@ -33,7 +40,7 @@ function filterRecipes() {
   n > 0 && i > 0 ? (t.style.display = "none") : (t.style.display = "block");
 }
 
-/* 
+/*
 * Object that handles the variables of the meals of the days
 */
 var meal = {
@@ -43,7 +50,7 @@ var meal = {
   picture: null
 };
 
-/* 
+/*
 * Initializes the matrix and shows the default selection
 */
 function initializeMatrix(matrix, selected) {
@@ -54,7 +61,7 @@ function initializeMatrix(matrix, selected) {
   document.getElementsByClassName("matrix-element")[0].style.backgroundColor = "#ffffff";
 }
 
-/* 
+/*
 * Changes the selections and shows a visual representaion of it.
 */
 function changeElement(toChange, selected) {
