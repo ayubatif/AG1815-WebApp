@@ -39,6 +39,7 @@ function handleRecipeState(id, selected, matrix) {
 
     // Replace current recipe picture
     matrixElement.changePicture("./res/phd-image" + id + ".png");
+    coolChart();
 }
 
 /* 
@@ -266,4 +267,121 @@ function debug(selected, matrix) {
         console.log(matrix[index].ingredients);
         console.log(matrix[index].picture);
     }
+}
+
+/**
+ * Draw a cool PHD relative chart
+ */
+function coolChart() {
+    var mCanvas = document.getElementById("testchart");
+
+    var ctx = mCanvas.getContext("2d");
+    var theChart = new weirdChart( {
+            canvas: mCanvas,
+            meal: sampleMeal,
+            phd: samplePHD,
+            colors: ["#fde23e","#f16e23", "#57d9ff","#937e88","#f23da3"]
+        }
+    );
+    theChart.draw();
+    
+}
+
+var samplePHD = {
+    "Meat": 10,
+    "Dairy": 20,
+    "Fiber": 15,
+    "Fruits": 60,
+    "Kebab": 5
+}
+
+var sampleMeal = {
+    "Meat": 30,
+    "Dairy": 30,
+    "Fiber": 15,
+    "Fruits": 31,
+    "Kebab": 30
+};
+
+// parts provided by https://code.tutsplus.com
+var weirdChart = function(options) {
+    this.options = options;
+    this.canvas = options.canvas;
+    this.ctx = this.canvas.getContext("2d");
+    this.colors = options.colors;
+
+    this.draw = function() {
+        var color_index = 0;
+        var num_val = 0;
+        var max_dim_absolute = Math.min(this.canvas.width/2, this.canvas.height/2);
+        var max_dim = max_dim_absolute * 0.9;
+        var graph_scale = 1;
+        for (var categ in this.options.meal) {
+            num_val++;
+            // scale graph
+            while ((this.options.meal[categ]/this.options.phd[categ] * max_dim/4 * graph_scale) > max_dim ) {
+                graph_scale = graph_scale * 0.9;
+            }
+        }
+ 
+        // draw slices
+        var start_angle = 0;
+        for (categ in this.options.meal) {
+            val = this.options.meal[categ];
+            var phd_val = this.options.phd[categ];
+            var relative_val = val / phd_val;
+            
+            var slice_angle = 2 * Math.PI * (1 / num_val);
+
+            
+            console.log("Drawing slice: "+categ+" with rel_val: "+relative_val);
+ 
+            drawPieSlice(
+                this.ctx,
+                this.canvas.width/2,
+                this.canvas.height/2,
+                max_dim/4 * relative_val * graph_scale,
+                start_angle,
+                start_angle+slice_angle,
+                this.colors[color_index%this.colors.length]
+            );
+ 
+            start_angle += slice_angle;
+            color_index++;
+        }
+
+        // draw phd circle
+        this.ctx.fillStyle = "#47c3d3";
+        drawArc(
+            this.ctx,
+            this.canvas.width/2,
+            this.canvas.height/2,
+            max_dim/4 * graph_scale,
+            start_angle,
+            2 * Math.PI * max_dim/2
+        )
+ 
+    }
+}
+
+function drawPieSlice(ctx, centerX, centerY, radius, startAngle, endAngle, color){
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(centerX,centerY);
+    ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+    ctx.closePath();
+    ctx.fill();
+}
+
+function drawLine(ctx, startX, startY, endX, endY){
+    ctx.beginPath();
+    ctx.moveTo(startX,startY);
+    ctx.lineTo(endX,endY);
+    ctx.stroke();
+}
+
+function drawArc(ctx, centerX, centerY, radius, startAngle, endAngle){
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+    ctx.stroke();
 }

@@ -210,6 +210,8 @@ body {
 
 /* Right includes graphs and other results*/
 .right-container {
+    display: flex;
+    flex-direction: column;
     margin-left: 1vw;
     text-align: center;
     grid-column: 2 / 5;
@@ -261,4 +263,15 @@ body {
     width: 25vw;
     height: 25vw;
     background-color: #ffffff;
+    border: 0.25em solid #47c3d3;
+    border-radius: 0.5vw;
+}
+
+#testchart {
+    width: 25vw;
+    height: 25vw;
+    background-color: #fff;
+    border: 0.25em solid #47c3d3;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
 }
