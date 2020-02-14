@@ -222,6 +222,45 @@ class Meal {
         this.picture = newPicture;
     }
     
+    /* 
+    * Choose köttbullar
+    */
+    chooseMeatball()
+    {
+        this.recipe = 0;
+        this.recipe_name = "Meatballs with mashed potatoes and lingonberry jam";
+        this.ingredients = chooseIngredientsMeatball;
+    }
+
+    /* 
+    * Choose planetary health wok
+    */
+    choosePlanetaryWok()
+    {
+        this.recipe = 1;
+        this.recipe_name = "The Planetary Health Wok";
+        this.ingredients = chooseIngredientsPlanetaryWok;
+    }
+
+    /* 
+    * Choose flying jacob
+    */
+    chooseFlyingJacob()
+    {
+        this.recipe = 2;
+        this.recipe_name = "Chicken with bacon and bananas";
+        this.ingredients = chooseIngredientsFlyingJacob;
+    }
+
+    /* 
+    * Choose root vegetable soup
+    */
+   chooseRootSoup()
+   {
+        this.recipe = 3;
+        this.recipe_name = "Root vegetable soup";
+        this.ingredients = chooseIngredientsRootSoup;
+   }
 }
 
 /* 
@@ -307,6 +346,36 @@ function chooseIngredientsFlyingJacob()
         "treeNuts" : 0,
         "palmOil" : 0,
         "unsaturatedOil" : 2,
+        "lard" : 0,
+        "sugar" : 0,
+    };
+
+    return ingredients;
+}
+
+/* 
+* Is root vegetable soup ingredients amount
+*/
+function chooseIngredientsRootSoup()
+{
+    ingredients = 
+    {
+        "wholeGrains" : 0,
+        "starchyVegetables" : 75,
+        "vegetables" : 150,
+        "fruits" : 0,
+        "dairy" : 100,
+        "beef" : 0,
+        "pork" : 0,
+        "poultry" : 0,
+        "eggs" : 0,
+        "fish" : 0,
+        "beans" : 0,
+        "soy" : 0,
+        "peanuts" : 0,
+        "treeNuts" : 0,
+        "palmOil" : 0,
+        "unsaturatedOil" : 15,
         "lard" : 0,
         "sugar" : 0,
     };
