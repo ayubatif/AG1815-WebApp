@@ -16,9 +16,9 @@ function toggleRecipesDropdown() {
  */
 function handleRecipesChange(id, selected, matrix) {
   toggleRecipesDropdown();
-  handleRecipeState(id, selected, matrix); 
+  handleRecipeState(id, selected, matrix);
   handleRecipeNameChange(selected, matrix);
-  handleIngredientsState(selected, matrix); 
+  handleIngredientsState(selected, matrix);
   handleImageChange(selected, matrix);
 }
 
@@ -29,17 +29,6 @@ function handleRecipeState(id, selected, matrix) {
   matrixElement = matrix[selected];
   matrixElement.changeRecipe(id);
 
-  // Remove all ingredients then add them again because we dont store recipes
-  /* matrixElement.removeAllIngredients();
-  if (matrixElement.num_ingredients < 1) {
-    for (let i = 0; i < id + 1; i++) {
-      matrixElement.addIngredient(
-        "Recipe" + id + ":" + i,
-        (3 * (id + 3) + 5 * (id + 1) * (i + 2)) % 100
-      );
-    }
-  } */
-
   // Replace current recipe picture
   matrixElement.changePicture("./res/phd-image" + id + ".png");
 }
@@ -49,7 +38,6 @@ function handleRecipeState(id, selected, matrix) {
  */
 function handleRecipeNameChange(selected, matrix) {
   matrixElement = matrix[selected];
-  console.log(matrixElement.recipe);
   if (matrixElement.recipe == null) {
     document
       .getElementById("SearchInput")
@@ -118,7 +106,7 @@ function handleIngredientsState(selected, matrix) {
     // handle change in ingredient amount via slider
     ingredient_slider.oninput = function() {
       ingredient_amount.innerHTML = this.value;
-      ingredient.changeAmount(this.value);
+      ingredient.amount = this.value;
     };
     ingredient_slider_container.appendChild(ingredient_slider);
     ingredient_container.appendChild(ingredient_slider_container);
@@ -427,7 +415,7 @@ function initializeMatrix(matrix) {
     "#ffffff";
   document.getElementById("phd-image").src = matrix[0].picture;
 
-  handleIngredientsState(selected, matrix); 
+  handleIngredientsState(selected, matrix);
 }
 
 /*
@@ -458,9 +446,8 @@ function debug(selected, matrix) {
     console.log("element: " + index);
     console.log(matrix[index].recipe);
     console.log(matrix[index].recipe_name);
-    for (let y = 0; y < matrix[index].ingredient.length; y++)
-    {
-        console.log(matrix[index].ingredient.ingredient);
+    for (let y = 0; y < matrix[index].ingredient.length; y++) {
+      console.log(matrix[index].ingredient.ingredient);
     }
     console.log(matrix[index].picture);
   }
