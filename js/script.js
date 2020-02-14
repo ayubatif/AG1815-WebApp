@@ -89,7 +89,7 @@ function handleIngredientsState(selected, matrix) {
     var ingredient_slider = document.createElement("input");
     ingredient_slider.className = "ingredient-slider";
     ingredient_slider.setAttribute("type", "range");
-    ingredient_slider.setAttribute("min", 1);
+    ingredient_slider.setAttribute("min", 0);
     ingredient_slider.setAttribute("max", 100);
     ingredient_slider.setAttribute("value", ingredient.amount);
 
