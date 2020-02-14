@@ -59,10 +59,7 @@ function handleRecipeNameChange(selected, matrix) {
   recipe_name_containers = document.getElementsByClassName("dropdown-recipe");
   document
     .getElementById("SearchInput")
-    .setAttribute(
-      "Placeholder",
-      matrixElement.recipe_name
-    );
+    .setAttribute("Placeholder", matrixElement.recipe_name);
 }
 
 /*
@@ -173,26 +170,26 @@ class Meal {
   constructor() {
     this.recipe = null;
     this.recipe_name = null;
-    this.ingredients = {
-      wholeGrains: 0,
-      starchyVegetables: 0,
-      vegetables: 0,
-      fruits: 0,
-      dairy: 0,
-      beef: 0,
-      pork: 0,
-      poultry: 0,
-      eggs: 0,
-      fish: 0,
-      beans: 0,
-      soy: 0,
-      peanuts: 0,
-      treeNuts: 0,
-      palmOil: 0,
-      unsaturatedOil: 0,
-      lard: 0,
-      sugar: 0
-    };
+    this.ingredients = [
+      { ingredient: "Whole Grains", amount: 0, color: "#000099" },
+      { ingredient: "Starchy Vegetables", amount: 0, color: "#006666" },
+      { ingredient: "Vegetables", amount: 0, color: "#0099cc" },
+      { ingredient: "Fruits", amount: 0, color: "#0033cc" },
+      { ingredient: "Dairy", amount: 0, color: "#669999" },
+      { ingredient: "Beef", amount: 0, color: "#33cccc" },
+      { ingredient: "Pork", amount: 0, color: "#0099ff" },
+      { ingredient: "Poultry", amount: 0, color: "#00ffcc" },
+      { ingredient: "Eggs", amount: 0, color: "#33ccff" },
+      { ingredient: "Fish", amount: 0, color: "#6666ff" },
+      { ingredient: "Beans", amount: 0, color: "#00ff99" },
+      { ingredient: "Soy", amount: 0, color: "#99ccff" },
+      { ingredient: "Peanuts", amount: 0, color: "#cc33ff" },
+      { ingredient: "Tree Nuts", amount: 0, color: "#009900" },
+      { ingredient: "Palm Oil", amount: 0, color: "#99ff66" },
+      { ingredient: "Unsaturated Oil", amount: 0, color: "#ff99cc" },
+      { ingredient: "Lard", amount: 0, color: "#cc0099" },
+      { ingredient: "Sugar", amount: 0, color: "#ff0066" }
+    ];
     this.picture = "./res/phd-base.png";
   }
 
@@ -201,21 +198,21 @@ class Meal {
    */
   changeRecipe(newRecipe) {
     switch (newRecipe) {
-        case 0:
-            this.chooseMeatball();
-            break;
-    
-        case 1:
-            this.choosePlanetaryWok()
-            break;
+      case 0:
+        this.chooseMeatball();
+        break;
 
-        case 2:
-            this.chooseFlyingJacob();
-            break;
+      case 1:
+        this.choosePlanetaryWok();
+        break;
 
-        case 3:
-            this.chooseRootSoup();
-            break;
+      case 2:
+        this.chooseFlyingJacob();
+        break;
+
+      case 3:
+        this.chooseRootSoup();
+        break;
     }
   }
 
@@ -290,26 +287,26 @@ class Meal {
  * Is köttbullar ingredients amount
  */
 function chooseIngredientsMeatball() {
-  ingredients = {
-    wholeGrains: 5,
-    starchyVegetables: 250,
-    vegetables: 13,
-    fruits: 50,
-    dairy: 105,
-    beef: 62,
-    pork: 63,
-    poultry: 0,
-    eggs: 16,
-    fish: 0,
-    beans: 0,
-    soy: 0,
-    peanuts: 0,
-    treeNuts: 0,
-    palmOil: 0,
-    unsaturatedOil: 0,
-    lard: 0,
-    sugar: 26
-  };
+  ingredients = [
+    { ingredient: "Whole Grains", amount: 5, color: "#000099" },
+    { ingredient: "Starchy Vegetables", amount: 150, color: "#006666" },
+    { ingredient: "Vegetables", amount: 13, color: "#0099cc" },
+    { ingredient: "Fruits", amount: 50, color: "#0033cc" },
+    { ingredient: "Dairy", amount: 105, color: "#669999" },
+    { ingredient: "Beef", amount: 62, color: "#33cccc" },
+    { ingredient: "Pork", amount: 63, color: "#0099ff" },
+    { ingredient: "Poultry", amount: 0, color: "#00ffcc" },
+    { ingredient: "Eggs", amount: 16, color: "#33ccff" },
+    { ingredient: "Fish", amount: 0, color: "#6666ff" },
+    { ingredient: "Beans", amount: 0, color: "#00ff99" },
+    { ingredient: "Soy", amount: 0, color: "#99ccff" },
+    { ingredient: "Peanuts", amount: 0, color: "#cc33ff" },
+    { ingredient: "Tree Nuts", amount: 0, color: "#009900" },
+    { ingredient: "Palm Oil", amount: 0, color: "#99ff66" },
+    { ingredient: "Unsaturated Oil", amount: 0, color: "#ff99cc" },
+    { ingredient: "Lard", amount: 0, color: "#cc0099" },
+    { ingredient: "Sugar", amount: 26, color: "#ff0066" }
+  ];
 
   return ingredients;
 }
@@ -318,26 +315,26 @@ function chooseIngredientsMeatball() {
  * Is planetary health wok ingredients amount
  */
 function chooseIngredientsPlanetaryWok() {
-  ingredients = {
-    wholeGrains: 175,
-    starchyVegetables: 25,
-    vegetables: 126,
-    fruits: 0,
-    dairy: 98,
-    beef: 0,
-    pork: 0,
-    poultry: 0,
-    eggs: 0,
-    fish: 0,
-    beans: 0,
-    soy: 88,
-    peanuts: 6,
-    treeNuts: 0,
-    palmOil: 0,
-    unsaturatedOil: 0,
-    lard: 0,
-    sugar: 1
-  };
+  ingredients = [
+    { ingredient: "Whole Grains", amount: 175, color: "#000099" },
+    { ingredient: "Starchy Vegetables", amount: 25, color: "#006666" },
+    { ingredient: "Vegetables", amount: 126, color: "#0099cc" },
+    { ingredient: "Fruits", amount: 0, color: "#0033cc" },
+    { ingredient: "Dairy", amount: 98, color: "#669999" },
+    { ingredient: "Beef", amount: 0, color: "#33cccc" },
+    { ingredient: "Pork", amount: 0, color: "#0099ff" },
+    { ingredient: "Poultry", amount: 0, color: "#00ffcc" },
+    { ingredient: "Eggs", amount: 0, color: "#33ccff" },
+    { ingredient: "Fish", amount: 0, color: "#6666ff" },
+    { ingredient: "Beans", amount: 0, color: "#00ff99" },
+    { ingredient: "Soy", amount: 88, color: "#99ccff" },
+    { ingredient: "Peanuts", amount: 6, color: "#cc33ff" },
+    { ingredient: "Tree Nuts", amount: 0, color: "#009900" },
+    { ingredient: "Palm Oil", amount: 0, color: "#99ff66" },
+    { ingredient: "Unsaturated Oil", amount: 0, color: "#ff99cc" },
+    { ingredient: "Lard", amount: 0, color: "#cc0099" },
+    { ingredient: "Sugar", amount: 1, color: "#ff0066" }
+  ];
 
   return ingredients;
 }
@@ -346,26 +343,26 @@ function chooseIngredientsPlanetaryWok() {
  * Is flying jacob ingredients amount
  */
 function chooseIngredientsFlyingJacob() {
-  ingredients = {
-    wholeGrains: 60,
-    starchyVegetables: 0,
-    vegetables: 15,
-    fruits: 30,
-    dairy: 100,
-    beef: 0,
-    pork: 35,
-    poultry: 125,
-    eggs: 0,
-    fish: 0,
-    beans: 0,
-    soy: 0,
-    peanuts: 15,
-    treeNuts: 0,
-    palmOil: 0,
-    unsaturatedOil: 2,
-    lard: 0,
-    sugar: 0
-  };
+  ingredients = [
+    { ingredient: "Whole Grains", amount: 60, color: "#000099" },
+    { ingredient: "Starchy Vegetables", amount: 0, color: "#006666" },
+    { ingredient: "Vegetables", amount: 15, color: "#0099cc" },
+    { ingredient: "Fruits", amount: 30, color: "#0033cc" },
+    { ingredient: "Dairy", amount: 100, color: "#669999" },
+    { ingredient: "Beef", amount: 0, color: "#33cccc" },
+    { ingredient: "Pork", amount: 35, color: "#0099ff" },
+    { ingredient: "Poultry", amount: 125, color: "#00ffcc" },
+    { ingredient: "Eggs", amount: 0, color: "#33ccff" },
+    { ingredient: "Fish", amount: 0, color: "#6666ff" },
+    { ingredient: "Beans", amount: 0, color: "#00ff99" },
+    { ingredient: "Soy", amount: 0, color: "#99ccff" },
+    { ingredient: "Peanuts", amount: 15, color: "#cc33ff" },
+    { ingredient: "Tree Nuts", amount: 0, color: "#009900" },
+    { ingredient: "Palm Oil", amount: 0, color: "#99ff66" },
+    { ingredient: "Unsaturated Oil", amount: 2, color: "#ff99cc" },
+    { ingredient: "Lard", amount: 0, color: "#cc0099" },
+    { ingredient: "Sugar", amount: 0, color: "#ff0066" }
+  ];
 
   return ingredients;
 }
@@ -374,26 +371,26 @@ function chooseIngredientsFlyingJacob() {
  * Is root vegetable soup ingredients amount
  */
 function chooseIngredientsRootSoup() {
-  ingredients = {
-    wholeGrains: 0,
-    starchyVegetables: 75,
-    vegetables: 150,
-    fruits: 0,
-    dairy: 100,
-    beef: 0,
-    pork: 0,
-    poultry: 0,
-    eggs: 0,
-    fish: 0,
-    beans: 0,
-    soy: 0,
-    peanuts: 0,
-    treeNuts: 0,
-    palmOil: 0,
-    unsaturatedOil: 15,
-    lard: 0,
-    sugar: 0
-  };
+  ingredients = [
+    { ingredient: "Whole Grains", amount: 0, color: "#000099" },
+    { ingredient: "Starchy Vegetables", amount: 75, color: "#006666" },
+    { ingredient: "Vegetables", amount: 150, color: "#0099cc" },
+    { ingredient: "Fruits", amount: 0, color: "#0033cc" },
+    { ingredient: "Dairy", amount: 100, color: "#669999" },
+    { ingredient: "Beef", amount: 0, color: "#33cccc" },
+    { ingredient: "Pork", amount: 0, color: "#0099ff" },
+    { ingredient: "Poultry", amount: 0, color: "#00ffcc" },
+    { ingredient: "Eggs", amount: 0, color: "#33ccff" },
+    { ingredient: "Fish", amount: 0, color: "#6666ff" },
+    { ingredient: "Beans", amount: 0, color: "#00ff99" },
+    { ingredient: "Soy", amount: 0, color: "#99ccff" },
+    { ingredient: "Peanuts", amount: 0, color: "#cc33ff" },
+    { ingredient: "Tree Nuts", amount: 0, color: "#009900" },
+    { ingredient: "Palm Oil", amount: 0, color: "#99ff66" },
+    { ingredient: "Unsaturated Oil", amount: 15, color: "#ff99cc" },
+    { ingredient: "Lard", amount: 0, color: "#cc0099" },
+    { ingredient: "Sugar", amount: 0, color: "#ff0066" }
+  ];
 
   return ingredients;
 }
