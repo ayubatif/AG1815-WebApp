@@ -152,6 +152,7 @@ function filterRecipes() {
 */
 class Meal {
     recipe = null;
+    recipe_name = null;
     ingredients = null;
     num_ingredients = 0;
     picture = null;
@@ -161,7 +162,28 @@ class Meal {
     */
     constructor() {
         this.recipe = null;
-        this.ingredients = [];
+        this.recipe_name = null;
+        this.ingredients = 
+        {
+            "wholeGrains" : 0,
+            "starchyVegetables" : 0,
+            "vegetables" : 0,
+            "fruits" : 0,
+            "dairy" : 0,
+            "beef" : 0,
+            "pork" : 0,
+            "poultry" : 0,
+            "eggs" : 0,
+            "fish" : 0,
+            "beans" : 0,
+            "soy" : 0,
+            "peanuts" : 0,
+            "treeNuts" : 0,
+            "palmOil" : 0,
+            "unsaturatedOil" : 0,
+            "lard" : 0,
+            "sugar" : 0,
+        };
         this.picture = "./res/phd-base.png";
     }
 
@@ -199,6 +221,8 @@ class Meal {
     changePicture(newPicture) {
         this.picture = newPicture;
     }
+
+    
 }
 
 /**
