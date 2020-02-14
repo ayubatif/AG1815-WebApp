@@ -343,55 +343,43 @@ var weirdChart = function(options) {
     this.draw = function() {
         var color_index = 0;
         var num_val = 0;
-        var max_dim_absolute = Math.min(this.canvas.width/2, this.canvas.height/2);
-        var max_dim = max_dim_absolute * 0.9; // padding of 10% radius
-        var phd_dim = max_dim; // radius of the phd circle is base 100% radius
+        var max_rad_absolute = Math.min(this.canvas.width/2, this.canvas.height/2);
+        var max_rad_90 = max_rad_absolute * 0.9; // padding of 10% radius
+        var phd_rad = max_rad_90; // radius of the phd circle is base 100% radius
         for (var categ in this.options.meal) {
             num_val++;
             let relative_val = this.options.meal[categ] / this.options.phd[categ];
             // scale phd circle and as a result the rest of the graph
-            console.log((phd_dim * relative_val)+":"+max_dim);
-            while (relative_val * phd_val > max_dim) {
-                Console.log("scale down")
-                phd_dim = phd_dim * 0.9; // scale the graph by 0.9 whenever elements too big
+            while ((relative_val * phd_rad) > max_rad_90) {
+                phd_rad = phd_rad * 0.9; // scale the graph by 0.9 whenever elements too big
             }
         }
- 
         // draw slices
         var start_angle = 0;
-        for (categ in this.options.meal) {
-            var val = this.options.meal[categ];
-            var phd_val = this.options.phd[categ];
-            let relative_val = val / phd_val;
-            
-            var slice_angle = 2 * Math.PI * (1 / num_val);
-
-            
-            console.log("Drawing slice: "+categ+" with rel_val: "+relative_val+" and phd_dim: "+phd_dim);
- 
+        var slice_angle = 2 * Math.PI * (1 / num_val);
+        for (var categ in this.options.meal) {
+            let relative_val = this.options.meal[categ] / this.options.phd[categ];
             drawPieSlice(
                 this.ctx,
-                this.canvas.width/2,
-                this.canvas.height/2,
-                phd_dim * relative_val,
+                this.canvas.width / 2,
+                this.canvas.height / 2,
+                relative_val * phd_rad,
                 start_angle,
-                start_angle+slice_angle,
-                this.colors[color_index%this.colors.length]
+                start_angle + slice_angle,
+                this.colors[color_index]
             );
- 
             start_angle += slice_angle;
             color_index++;
         }
 
         // draw phd circle
-        this.ctx.fillStyle = "#47c3d3";
         drawArc(
             this.ctx,
             this.canvas.width/2,
             this.canvas.height/2,
-            phd_dim,
+            phd_rad,
             start_angle,
-            2 * Math.PI * max_dim/2,
+            2 * Math.PI * phd_rad,
             "#47c3d3",
             true
         )
@@ -416,7 +404,7 @@ function drawLine(ctx, startX, startY, endX, endY){
 }
 
 function drawArc(ctx, centerX, centerY, radius, startAngle, endAngle, color, dashed){
-    ctx.fillStyle = color;
+    ctx.strokeStyle = color;
     if (dashed) ctx.setLineDash([5, 3]); /*dashes are 5px and spaces are 3px*/
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, startAngle, endAngle);
