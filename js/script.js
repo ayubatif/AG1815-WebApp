@@ -280,7 +280,11 @@ function coolChart() {
             canvas: mCanvas,
             meal: sampleMeal,
             phd: samplePHD,
-            colors: ["#fde23e","#f16e23", "#57d9ff","#937e88","#f23da3"]
+            colors: [
+                "#1ce23e","#b16e23", "#47d9ff","#937e88","#7c2da3", 
+                "#32323e","#f16533", "537d9ff","#427e88","#ade42e",
+                "#116e33", "#2797ff","#637648",
+            ]
         }
     );
     theChart.draw();
@@ -288,19 +292,45 @@ function coolChart() {
 }
 
 var samplePHD = {
-    "Meat": 10,
-    "Dairy": 20,
-    "Fiber": 15,
-    "Fruits": 60,
-    "Kebab": 5
+    "Meat0": 10,
+    "Dairy0": 20,
+    "Fiber0": 15,
+    "Fruits0": 60,
+    "Kebab0": 25,
+    "Meat1": 20,
+    "Dairy1": 30,
+    "Fiber1": 25,
+    "Fruits1": 20,
+    "Kebab1": 15,
+    "Meat2": 14,
+    "Dairy2": 10,
+    "Fiber2": 25,
+    "Fruits2": 30,
+    "Kebab2": 15,
+    "Meat3": 12,
+    "Dairy3": 32,
+    "Fiber3": 10
 }
 
 var sampleMeal = {
-    "Meat": 30,
-    "Dairy": 30,
-    "Fiber": 15,
-    "Fruits": 31,
-    "Kebab": 30
+    "Meat0": 20,
+    "Dairy0": 20,
+    "Fiber0": 25,
+    "Fruits0": 30,
+    "Kebab0": 25,
+    "Meat1": 40,
+    "Dairy1": 5,
+    "Fiber1": 25,
+    "Fruits1": 2,
+    "Kebab1": 15,
+    "Meat2": 5,
+    "Dairy2": 15,
+    "Fiber2": 25,
+    "Fruits2": 14,
+    "Kebab2": 12,
+    "Meat3": 0,
+    "Dairy3": 3,
+    "Fiber3": 10
 };
 
 // parts provided by https://code.tutsplus.com
@@ -314,33 +344,36 @@ var weirdChart = function(options) {
         var color_index = 0;
         var num_val = 0;
         var max_dim_absolute = Math.min(this.canvas.width/2, this.canvas.height/2);
-        var max_dim = max_dim_absolute * 0.9;
-        var graph_scale = 1;
+        var max_dim = max_dim_absolute * 0.9; // padding of 10% radius
+        var phd_dim = max_dim; // radius of the phd circle is base 100% radius
         for (var categ in this.options.meal) {
             num_val++;
-            // scale graph
-            while ((this.options.meal[categ]/this.options.phd[categ] * max_dim/4 * graph_scale) > max_dim ) {
-                graph_scale = graph_scale * 0.9;
+            let relative_val = this.options.meal[categ] / this.options.phd[categ];
+            // scale phd circle and as a result the rest of the graph
+            console.log((phd_dim * relative_val)+":"+max_dim);
+            while (relative_val * phd_val > max_dim) {
+                Console.log("scale down")
+                phd_dim = phd_dim * 0.9; // scale the graph by 0.9 whenever elements too big
             }
         }
  
         // draw slices
         var start_angle = 0;
         for (categ in this.options.meal) {
-            val = this.options.meal[categ];
+            var val = this.options.meal[categ];
             var phd_val = this.options.phd[categ];
-            var relative_val = val / phd_val;
+            let relative_val = val / phd_val;
             
             var slice_angle = 2 * Math.PI * (1 / num_val);
 
             
-            console.log("Drawing slice: "+categ+" with rel_val: "+relative_val);
+            console.log("Drawing slice: "+categ+" with rel_val: "+relative_val+" and phd_dim: "+phd_dim);
  
             drawPieSlice(
                 this.ctx,
                 this.canvas.width/2,
                 this.canvas.height/2,
-                max_dim/4 * relative_val * graph_scale,
+                phd_dim * relative_val,
                 start_angle,
                 start_angle+slice_angle,
                 this.colors[color_index%this.colors.length]
@@ -356,9 +389,11 @@ var weirdChart = function(options) {
             this.ctx,
             this.canvas.width/2,
             this.canvas.height/2,
-            max_dim/4 * graph_scale,
+            phd_dim,
             start_angle,
-            2 * Math.PI * max_dim/2
+            2 * Math.PI * max_dim/2,
+            "#47c3d3",
+            true
         )
  
     }
@@ -380,7 +415,9 @@ function drawLine(ctx, startX, startY, endX, endY){
     ctx.stroke();
 }
 
-function drawArc(ctx, centerX, centerY, radius, startAngle, endAngle){
+function drawArc(ctx, centerX, centerY, radius, startAngle, endAngle, color, dashed){
+    ctx.fillStyle = color;
+    if (dashed) ctx.setLineDash([5, 3]); /*dashes are 5px and spaces are 3px*/
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, startAngle, endAngle);
     ctx.stroke();
