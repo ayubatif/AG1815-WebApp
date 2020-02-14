@@ -16,10 +16,10 @@ function toggleRecipesDropdown() {
  */
 function handleRecipesChange(id, selected, matrix) {
   toggleRecipesDropdown();
-  handleRecipeState(id, selected, matrix); //check again
+  handleRecipeState(id, selected, matrix); 
   handleRecipeNameChange(selected, matrix);
-  handleIngredientsState(selected, matrix); //working on
-  handleImageChange(selected, matrix); //wait for ayub
+  handleIngredientsState(selected, matrix); 
+  handleImageChange(selected, matrix);
 }
 
 /*
@@ -30,7 +30,7 @@ function handleRecipeState(id, selected, matrix) {
   matrixElement.changeRecipe(id);
 
   // Remove all ingredients then add them again because we dont store recipes
-  matrixElement.removeAllIngredients();
+  /* matrixElement.removeAllIngredients();
   if (matrixElement.num_ingredients < 1) {
     for (let i = 0; i < id + 1; i++) {
       matrixElement.addIngredient(
@@ -38,7 +38,7 @@ function handleRecipeState(id, selected, matrix) {
         (3 * (id + 3) + 5 * (id + 1) * (i + 2)) % 100
       );
     }
-  }
+  } */
 
   // Replace current recipe picture
   matrixElement.changePicture("./res/phd-image" + id + ".png");
@@ -93,7 +93,7 @@ function handleIngredientsState(selected, matrix) {
 
     var ingredient_name = document.createElement("p");
     ingredient_name.className = "ingredient-name";
-    ingredient_name.innerHTML = ingredient.name;
+    ingredient_name.innerHTML = ingredient.ingredient;
 
     var ingredient_slider_container = document.createElement("div");
     ingredient_slider_container.className = "ingredient-slider-container";
@@ -227,11 +227,6 @@ class Meal {
   }
 
   /**
-   * Remove an ingredient TODO
-   */
-  removeIngredient() {}
-
-  /**
    * Remove all ingredients
    */
   removeAllIngredients() {
@@ -252,7 +247,7 @@ class Meal {
   chooseMeatball() {
     this.recipe = 0;
     this.recipe_name = "Meatballs with mashed potatoes and lingonberry jam";
-    this.ingredients = chooseIngredientsMeatball;
+    this.ingredients = chooseIngredientsMeatball();
   }
 
   /*
@@ -261,7 +256,7 @@ class Meal {
   choosePlanetaryWok() {
     this.recipe = 1;
     this.recipe_name = "The Planetary Health Wok";
-    this.ingredients = chooseIngredientsPlanetaryWok;
+    this.ingredients = chooseIngredientsPlanetaryWok();
   }
 
   /*
@@ -270,7 +265,7 @@ class Meal {
   chooseFlyingJacob() {
     this.recipe = 2;
     this.recipe_name = "Chicken with bacon and bananas";
-    this.ingredients = chooseIngredientsFlyingJacob;
+    this.ingredients = chooseIngredientsFlyingJacob();
   }
 
   /*
@@ -279,7 +274,7 @@ class Meal {
   chooseRootSoup() {
     this.recipe = 3;
     this.recipe_name = "Root vegetable soup";
-    this.ingredients = chooseIngredientsRootSoup;
+    this.ingredients = chooseIngredientsRootSoup();
   }
 }
 
@@ -431,6 +426,8 @@ function initializeMatrix(matrix) {
   document.getElementsByClassName("matrix-element")[0].style.backgroundColor =
     "#ffffff";
   document.getElementById("phd-image").src = matrix[0].picture;
+
+  handleIngredientsState(selected, matrix); 
 }
 
 /*
@@ -446,6 +443,7 @@ function changeElement(toChange, selected, matrix) {
   matrixElements[toChange].style.backgroundColor = "#ffffff";
   handleRecipeNameChange(toChange, matrix);
   handleIngredientsState(toChange, matrix);
+  handleIngredientsState(toChange, matrix);
   handleImageChange(toChange, matrix);
   return toChange;
 }
@@ -459,7 +457,11 @@ function debug(selected, matrix) {
   for (let index = 0; index < matrix.length; index++) {
     console.log("element: " + index);
     console.log(matrix[index].recipe);
-    console.log(matrix[index].ingredients);
+    console.log(matrix[index].recipe_name);
+    for (let y = 0; y < matrix[index].ingredient.length; y++)
+    {
+        console.log(matrix[index].ingredient.ingredient);
+    }
     console.log(matrix[index].picture);
   }
 }
