@@ -221,8 +221,97 @@ class Meal {
     changePicture(newPicture) {
         this.picture = newPicture;
     }
-
     
+}
+
+/* 
+* Is köttbullar ingredients amount
+*/
+function chooseIngredientsMeatball()
+{
+    ingredients = 
+    {
+        "wholeGrains" : 5,
+        "starchyVegetables" : 250,
+        "vegetables" : 13,
+        "fruits" : 50,
+        "dairy" : 105,
+        "beef" : 62,
+        "pork" : 63,
+        "poultry" : 0,
+        "eggs" : 16,
+        "fish" : 0,
+        "beans" : 0,
+        "soy" : 0,
+        "peanuts" : 0,
+        "treeNuts" : 0,
+        "palmOil" : 0,
+        "unsaturatedOil" : 0,
+        "lard" : 0,
+        "sugar" : 26,
+    };
+
+    return ingredients;
+}
+
+/* 
+* Is planetary health wok ingredients amount
+*/
+function chooseIngredientsPlanetaryWok()
+{
+    ingredients = 
+    {
+        "wholeGrains" : 175,
+        "starchyVegetables" : 25,
+        "vegetables" : 126,
+        "fruits" : 0,
+        "dairy" : 98,
+        "beef" : 0,
+        "pork" : 0,
+        "poultry" : 0,
+        "eggs" : 0,
+        "fish" : 0,
+        "beans" : 0,
+        "soy" : 88,
+        "peanuts" : 6,
+        "treeNuts" : 0,
+        "palmOil" : 0,
+        "unsaturatedOil" : 0,
+        "lard" : 0,
+        "sugar" : 1,
+    };
+
+    return ingredients;
+}
+
+/* 
+* Is flying jacob ingredients amount
+*/
+function chooseIngredientsFlyingJacob()
+{
+    ingredients = 
+    {
+        "wholeGrains" : 60,
+        "starchyVegetables" : 0,
+        "vegetables" : 15,
+        "fruits" : 30,
+        "dairy" : 100,
+        "beef" : 0,
+        "pork" : 35,
+        "poultry" : 125,
+        "eggs" : 0,
+        "fish" : 0,
+        "beans" : 0,
+        "soy" : 0,
+        "peanuts" : 15,
+        "treeNuts" : 0,
+        "palmOil" : 0,
+        "unsaturatedOil" : 2,
+        "lard" : 0,
+        "sugar" : 0,
+    };
+
+    return ingredients;
 }
 
 /**
