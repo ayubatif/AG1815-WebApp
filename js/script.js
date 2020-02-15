@@ -28,9 +28,6 @@ function handleRecipesChange(id, selected, matrix) {
 function handleRecipeState(id, selected, matrix) {
   matrixElement = matrix[selected];
   matrixElement.changeRecipe(id);
-
-  // Replace current recipe picture
-  matrixElement.changePicture("./res/phd-image" + id + ".png");
 }
 
 /*
@@ -54,7 +51,7 @@ function handleRecipeNameChange(selected, matrix) {
  * Changes the image based on recipe selection
  */
 function handleImageChange(selected, matrix) {
-  document.getElementById("phd-image").src = matrix[selected].picture;
+  coolChart(matrix[selected]);
 }
 
 /*
@@ -90,23 +87,36 @@ function handleIngredientsState(selected, matrix) {
     ingredient_slider.className = "ingredient-slider";
     ingredient_slider.setAttribute("type", "range");
     ingredient_slider.setAttribute("min", 0);
-    ingredient_slider.setAttribute("max", 100);
+    ingredient_slider.setAttribute("max", (ingredient.amount>0)? ingredient.amount*2 : 100);
     ingredient_slider.setAttribute("value", ingredient.amount);
 
     var ingredient_amount_container = document.createElement("div");
     ingredient_amount_container.className = "ingredient-amount-container";
-
-    var ingredient_amount = document.createElement("p");
+    
+    var ingredient_amount = document.createElement("input");
     ingredient_amount.className = "ingredient-amount";
-    ingredient_amount.innerHTML = ingredient.amount;
+    ingredient_amount.setAttribute("type", "text");
+    ingredient_amount.setAttribute("id", "SearchInput");
+    ingredient_amount.value = ingredient.amount+"g";
+
+    ingredient_amount.onkeyup = function() {
+      let new_val = parseInt(this.value.substr(0, this.value.length-1), 10);
+      if (new_val >= 0) {
+        ingredient_slider.setAttribute("max", (new_val > 0)? new_val*2 : 100);
+        ingredient_slider.setAttribute("value", new_val);
+        ingredient.amount = new_val;
+        handleImageChange(selected, matrix);
+      }
+    }
 
     ingredient_name_container.appendChild(ingredient_name);
     ingredient_container.appendChild(ingredient_name_container);
 
     // handle change in ingredient amount via slider
     ingredient_slider.oninput = function() {
-      ingredient_amount.innerHTML = this.value;
-      ingredient.amount = this.value;
+      ingredient_amount.value = this.value+"g";
+      ingredient.amount = this.value  ;
+      handleImageChange(selected, matrix);
     };
     ingredient_slider_container.appendChild(ingredient_slider);
     ingredient_container.appendChild(ingredient_slider_container);
@@ -378,6 +388,35 @@ function chooseIngredientsRootSoup() {
   return ingredients;
 }
 
+/*
+ * The average perfect meal
+ */
+function chooseIngredientsPHD() {
+  ingredients = [
+    { ingredient: "Whole Grains", amount: 232, color: "#000099" },
+    { ingredient: "Starchy Vegetables", amount: 50, color: "#006666" },
+    { ingredient: "Vegetables", amount: 400, color: "#0099cc" },
+    { ingredient: "Fruits", amount: 200, color: "#0033cc" },
+    { ingredient: "Dairy", amount: 250, color: "#669999" },
+    { ingredient: "Beef", amount: 7, color: "#33cccc" },
+    { ingredient: "Pork", amount: 7, color: "#0099ff" },
+    { ingredient: "Poultry", amount: 29, color: "#00ffcc" },
+    { ingredient: "Eggs", amount: 13, color: "#33ccff" },
+    { ingredient: "Fish", amount: 50, color: "#6666ff" },
+    { ingredient: "Beans", amount: 50, color: "#00ff99" },
+    { ingredient: "Soy", amount: 25, color: "#99ccff" },
+    { ingredient: "Peanuts", amount: 28, color: "#cc33ff" },
+    { ingredient: "Tree Nuts", amount: 13, color: "#009900" },
+    { ingredient: "Palm Oil", amount: 3, color: "#99ff66" },
+    { ingredient: "Unsaturated Oil", amount: 50, color: "#ff99cc" },
+    { ingredient: "Lard", amount: 2, color: "#cc0099" },
+    { ingredient: "Sugar", amount: 16, color: "#ff0066" }
+  ];
+
+  return ingredients;
+}
+
+
 /**
  * Ingredient class holds information on name and amount (maybe food deitary class?)
  */
@@ -413,7 +452,6 @@ function initializeMatrix(matrix) {
 
   document.getElementsByClassName("matrix-element")[0].style.backgroundColor =
     "#ffffff";
-  document.getElementById("phd-image").src = matrix[0].picture;
 
   handleIngredientsState(selected, matrix);
 }
@@ -430,7 +468,6 @@ function changeElement(toChange, selected, matrix) {
     matrixElements[toChange].style.backgroundColor;
   matrixElements[toChange].style.backgroundColor = "#ffffff";
   handleRecipeNameChange(toChange, matrix);
-  handleIngredientsState(toChange, matrix);
   handleIngredientsState(toChange, matrix);
   handleImageChange(toChange, matrix);
   return toChange;
@@ -456,83 +493,34 @@ function debug(selected, matrix) {
 /**
  * Draw a cool PHD relative chart
  */
-function coolChart() {
+function coolChart(some_meal) {
     var mCanvas = document.getElementById("testchart");
-
     var ctx = mCanvas.getContext("2d");
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height) // clear canvas
     var theChart = new weirdChart( {
             canvas: mCanvas,
-            meal: sampleMeal,
-            phd: samplePHD,
-            colors: [
-                "#1ce23e","#b16e23", "#47d9ff","#937e88","#7c2da3", 
-                "#32323e","#f16533", "537d9ff","#427e88","#ade42e",
-                "#116e33", "#2797ff","#637648",
-            ]
+            meal: some_meal,
+            phd_ingredients: chooseIngredientsPHD()
         }
     );
     theChart.draw();
     
 }
 
-var samplePHD = {
-    "Meat0": 10,
-    "Dairy0": 20,
-    "Fiber0": 15,
-    "Fruits0": 60,
-    "Kebab0": 25,
-    "Meat1": 20,
-    "Dairy1": 30,
-    "Fiber1": 25,
-    "Fruits1": 20,
-    "Kebab1": 15,
-    "Meat2": 14,
-    "Dairy2": 10,
-    "Fiber2": 25,
-    "Fruits2": 30,
-    "Kebab2": 15,
-    "Meat3": 12,
-    "Dairy3": 32,
-    "Fiber3": 10
-}
-
-var sampleMeal = {
-    "Meat0": 20,
-    "Dairy0": 20,
-    "Fiber0": 25,
-    "Fruits0": 30,
-    "Kebab0": 25,
-    "Meat1": 40,
-    "Dairy1": 5,
-    "Fiber1": 25,
-    "Fruits1": 2,
-    "Kebab1": 15,
-    "Meat2": 5,
-    "Dairy2": 15,
-    "Fiber2": 25,
-    "Fruits2": 14,
-    "Kebab2": 12,
-    "Meat3": 0,
-    "Dairy3": 3,
-    "Fiber3": 10
-};
-
 // parts provided by https://code.tutsplus.com
 var weirdChart = function(options) {
     this.options = options;
     this.canvas = options.canvas;
     this.ctx = this.canvas.getContext("2d");
-    this.colors = options.colors;
+    this.meal = options.meal;
+    this.phd_ingredients = options.phd_ingredients;
 
     this.draw = function() {
-        var color_index = 0;
-        var num_val = 0;
         var max_rad_absolute = Math.min(this.canvas.width/2, this.canvas.height/2);
         var max_rad_90 = max_rad_absolute * 0.9; // padding of 10% radius
         var phd_rad = max_rad_90; // radius of the phd circle is base 100% radius
-        for (var categ in this.options.meal) {
-            num_val++;
-            let relative_val = this.options.meal[categ] / this.options.phd[categ];
+        for(let i = 0; i < this.phd_ingredients.length; i++) {
+            let relative_val = this.meal.ingredients[i].amount / this.phd_ingredients[i].amount;
             // scale phd circle and as a result the rest of the graph
             while ((relative_val * phd_rad) > max_rad_90) {
                 phd_rad = phd_rad * 0.9; // scale the graph by 0.9 whenever elements too big
@@ -540,9 +528,9 @@ var weirdChart = function(options) {
         }
         // draw slices
         var start_angle = 0;
-        var slice_angle = 2 * Math.PI * (1 / num_val);
-        for (var categ in this.options.meal) {
-            let relative_val = this.options.meal[categ] / this.options.phd[categ];
+        var slice_angle = 2 * Math.PI * (1 / this.phd_ingredients.length);
+        for (let i = 0; i < this.phd_ingredients.length; i++) {
+            let relative_val = this.meal.ingredients[i].amount / this.phd_ingredients[i].amount;
             drawPieSlice(
                 this.ctx,
                 this.canvas.width / 2,
@@ -550,10 +538,9 @@ var weirdChart = function(options) {
                 relative_val * phd_rad,
                 start_angle,
                 start_angle + slice_angle,
-                this.colors[color_index]
+                this.phd_ingredients[i].color
             );
             start_angle += slice_angle;
-            color_index++;
         }
 
         // draw phd circle
