@@ -164,7 +164,7 @@ body {
 }
 
 .ingredient-slider {
-    width: 75%;
+    width: 90%;
     -webkit-appearance: none;
     height: 1vw;
     border-radius: 0.5vw;
@@ -201,7 +201,7 @@ body {
     text-align: left;
     display: inline-block;
     word-wrap: break-word;
-    width: 10%;
+    width: 20%;
     background-color: #f9f9f9;
     border-radius: 0.5vw;
     padding: 1vh;
@@ -210,6 +210,8 @@ body {
 
 /* Right includes graphs and other results*/
 .right-container {
+    display: flex;
+    flex-direction: column;
     margin-left: 1vw;
     text-align: center;
     grid-column: 2 / 5;
@@ -229,19 +231,6 @@ body {
     text-align: center;
 }
 
-/* Add a breakpoint at 800px*/
-@media screen and (max-width: 800px) {
-    .left-container {
-        grid-column: 1 / 5;
-        grid-row: 1 / 2;
-    }
-    .right-container {
-        grid-row: 2 / 5;
-        grid-column: 1 / 5;
-        margin: 1vh 0 0 0;
-    }
-}
-
 /* Main matrix container*/
 .matrix {
     display: grid;
@@ -255,12 +244,6 @@ body {
     background-color: #47c3d3;
 }
 
-/* This is the PHD image */
-#phd-image {
-    width: 25vw;
-    height: 25vw;
-    background-color: #ffffff;
-}
 #Progress_Status {
 width: 50%;
 background-color: #ddd;
@@ -278,4 +261,30 @@ background-color: #ddd;
   text-align: center;
   line-height: 32px;
   color: black;
+}
+
+#testchart {
+    width: 40vw;
+    height: 40vw;
+    background-color: #fff;
+    border: 0.25em solid #47c3d3;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+/* Add a breakpoint at 800px*/
+@media screen and (max-width: 933px) {
+    .left-container {
+        grid-column: 1 / 5;
+        grid-row: 1 / 2;
+    }
+    .right-container {
+        grid-row: 2 / 5;
+        grid-column: 1 / 5;
+        margin: 1vh 0 0 0;
+    }
+    #testchart {
+        width: 90vw;
+        height: 90vw;
+    }
 }
