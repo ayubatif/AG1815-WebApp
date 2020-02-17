@@ -236,6 +236,9 @@ class Meal {
     this.recipe = 0;
     this.recipe_name = "Meatballs with mashed potatoes and lingonberry jam";
     this.ingredients = chooseIngredientsMeatball();
+   update.call();
+
+
   }
 
   /*
@@ -254,6 +257,7 @@ class Meal {
     this.recipe = 2;
     this.recipe_name = "Chicken with bacon and bananas";
     this.ingredients = chooseIngredientsFlyingJacob();
+    update.call();
   }
 
   /*
@@ -450,5 +454,33 @@ function debug(selected, matrix) {
       console.log(matrix[index].ingredient.ingredient);
     }
     console.log(matrix[index].picture);
+  }
+}
+
+
+var width = 10;
+var id = null;
+
+function update() {
+  if (width == 100) {
+      return;
+  }
+
+  var elem = document.getElementById("myprogressBar");
+
+  if (id) {
+      clearInterval(id);
+  }
+
+  id = setInterval(frame, 10);
+
+  function frame() {
+    width ++;
+    elem.style.width = width + '%';
+    elem.innerHTML = width * 1 + '%';
+
+    if (width % 10 == 0) {
+      clearInterval(id);
+    }
   }
 }

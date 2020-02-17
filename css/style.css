@@ -167,14 +167,14 @@ body {
     width: 75%;
     -webkit-appearance: none;
     height: 1vw;
-    border-radius: 0.5vw;  
+    border-radius: 0.5vw;
     background: #7c7c7c;
     outline: none;
     opacity: 0.7;
     -webkit-transition: .2s;
     transition: opacity .2s;
 }
-  
+
 .ingredient-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
@@ -182,11 +182,11 @@ body {
     height: 2vh;
     min-width: 20px;
     min-height: 20px;
-    border-radius: 50%; 
+    border-radius: 50%;
     background: #47c3d3;
     cursor: pointer;
 }
-  
+
 .ingredient-slider::-moz-range-thumb {
     width: 2vh;
     height: 2vh;
@@ -260,4 +260,22 @@ body {
     width: 25vw;
     height: 25vw;
     background-color: #ffffff;
+}
+#Progress_Status {
+width: 50%;
+background-color: #ddd;
+}
+
+#Progress_Status {
+  width: 50%;
+  background-color: #ddd;
+}
+
+#myprogressBar {
+  width: 1%;
+  height: 35px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 32px;
+  color: black;
 }
