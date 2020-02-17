@@ -248,6 +248,7 @@ class Meal {
     this.recipe = 1;
     this.recipe_name = "The Planetary Health Wok";
     this.ingredients = chooseIngredientsPlanetaryWok();
+    update1.call();
   }
 
   /*
@@ -267,6 +268,7 @@ class Meal {
     this.recipe = 3;
     this.recipe_name = "Root vegetable soup";
     this.ingredients = chooseIngredientsRootSoup();
+    update1.call();
   }
 }
 
@@ -458,10 +460,40 @@ function debug(selected, matrix) {
 }
 
 
-var width = 10;
+var width = 20;
 var id = null;
 
 function update() {
+  if (width == 100) {
+      return;
+  }
+
+  var elem = document.getElementById("myprogressBar");
+
+  if (id) {
+      clearInterval(id);
+  }
+
+  id = setInterval(frame, 10);
+
+  function frame() {
+    width ++;
+    elem.style.width = width + '%';
+    elem.innerHTML = width * 1 + '%';
+
+    if (width % 10 == 0) {
+      clearInterval(id);
+    }
+  }
+}
+
+
+
+
+
+function update1() {
+  var width = 4;
+  var id = null;
   if (width == 100) {
       return;
   }
