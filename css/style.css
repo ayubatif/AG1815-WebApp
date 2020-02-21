@@ -1,60 +1,305 @@
 /* Universal stuff*/
 * {
     box-sizing: border-box;
-}
-
-html, body {
     margin: 0;
-    background: #f2f2f2;
+    padding: 0;
 }
 
+body {
+    font-family: sans-serif
+}
+
+/* Everything*/
 .main-container {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-gap: 10px;
-    background-color: coral;
-    padding: 5px;
+    background-color: #f2f2f2;
+    width: 100vw;
+    height: 100vh;
 }
 
+/* Title at top*/
 .banner-container {
+    display: inline-block;
+    position: relative;
     text-align: center;
-    grid-row-start: 1;
-    grid-row-end: 1;
-    grid-column-start: 1;
-    grid-column-end: 5;
-    background-color: cyan;
-    padding: 5px;
+    background-color: #47c3d3;
+    width: 50%;
+    left: 25%;
+    border: 0.2em solid cyan;
+    border-radius: 1vw;
+    padding: 1vw;
+    font-size: 1.425em;
 }
 
+/* Everything between banner and footer*/
 .content-container {
     display: grid;
-    grid-row-start: 2;
-    grid-row-end: 2;
-    grid-column-start: 1;
-    grid-column-end: 5;
-    background-color: greenyellow;
-    padding: 5px;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 1vh;
+    background-color: #f2f2f2;
+    min-height: 90vh;
+    margin-top: 1vh;
+    padding: 1vw;
 }
 
+/* Left includes schedule recipes and ingredients*/
 .left-container {
     text-align: center;
-    grid-column-start: 1;
-    grid-column-end: 1;
-    background-color: crimson;
+    grid-column: 1 / 2;
+    background-color: #f2f2f2;
+    border-radius: 1vw;
+    padding: 1vh;
 }
 
-.right-container {
+/* Search box container for recipes that also drops down examples*/
+.search-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+}
+
+/* search input as well as dropButton*/
+.search-bar {
+    background-color: #f9f9f9;
+    border: 0.25em solid #47c3d3;
+}
+
+/* Search input*/
+#SearchInput {
+    width: 90%;
+    height: 100%;
+    background-color: #f9f9f9;
+    border: 0;
+    padding: 1vh;
+    color: darkslategray;
+    font-size: 1em;
+}
+
+#SearchInput:focus{
+    color: #000;
+}
+
+/* Dropdown button in search box, mainly graphical purpose*/
+.search-button {
+    width: 10%;
+    float: right;
     text-align: center;
-    grid-column-start: 2;
-    grid-column-end: 2;
-    background-color: salmon;
+    pointer-events: none;
+    background-color: #f9f9f9;
+    border: 0;
+    padding: 0.5vh;
+    padding-top: 1vh;
+    color: #47c3d3;
 }
 
+/* Recipes container to drop down*/
+#SearchDropdown {
+    position: relative;
+    overflow: auto;
+    background-color: #f9f9f9;
+    border: 0.2em solid #47c3d3;
+    border-radius: 0 0 0.5vw 0.5vw;
+    padding-top: 1vh;
+    z-index: 1;
+}
+
+/* toggle*/
+.hidden {
+    display: none;
+}
+
+/* Recipes*/
+#SearchDropdown > a {
+    display: block;
+    margin-bottom: 1vh;
+    text-decoration: none;
+    color: royalblue;
+    font-size: 1em;
+}
+
+/* No recipes found..*/
+#SearchDropdown > #null {
+    display: none;
+    color: darkslategray;
+}
+
+#SearchDropdown > a:hover {
+    background-color: #ddd;
+}
+
+/* Ingredients container including sliders for amounts*/
+.ingredients-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1vw;
+}
+
+.ingredient-container {
+    position: relative;
+    display: flex;
+    background-color: #f9f9f9;
+    border: 0.25em solid #47c3d3;
+    border-radius: 0.5vw;
+    padding: 0.5vh;
+    margin-top: 1vh;
+    z-index: 1;
+}
+
+.ingredient-name-container {
+    text-align: left;
+    display: inline-block;
+    word-wrap: break-word;
+    width: 20%;
+    background-color: #f9f9f9;
+    border-radius: 0.5vw;
+    padding: 1vh;
+    z-index: 1;
+}
+
+/* Ingredients Slider*/
+.ingredient-slider-container {
+    margin-top: 1vw;
+    width: 70%;
+}
+
+.ingredient-slider {
+    width: 90%;
+    -webkit-appearance: none;
+    height: 1vw;
+    border-radius: 0.5vw;
+    background: #7c7c7c;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.ingredient-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 2vh;
+    height: 2vh;
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 50%;
+    background: #47c3d3;
+    cursor: pointer;
+}
+
+.ingredient-slider::-moz-range-thumb {
+    width: 2vh;
+    height: 2vh;
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 50%;
+    background: #47c3d3;
+    cursor: pointer;
+}
+
+.ingredient-amount-container {
+    text-align: left;
+    display: inline-block;
+    word-wrap: break-word;
+    width: 20%;
+    background-color: #f9f9f9;
+    border-radius: 0.5vw;
+    padding: 1vh;
+    z-index: 1;
+}
+
+/* Right includes graphs and other results*/
+.right-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1vw;
+    text-align: center;
+    grid-column: 2 / 5;
+    background-color: #f2f2f2;
+    border-radius: 1vw;
+    padding: 1vh;
+}
+
+/* Footer*/
 .footer-container {
-    grid-row-start: 3;
-    grid-row-end: 3;
-    grid-column-start: 1;
-    grid-column-end: 5;
-    background-color: grey;
-    padding: 5px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+}
+
+/* Main matrix container*/
+.matrix {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-auto-rows: 1fr;
+}
+
+/* The individual elements of the matrix like monday, breakfast */
+.matrix-element {
+    border: 0.25vw solid #000000;
+    background-color: #47c3d3;
+}
+
+#Progress_Status {
+width: 50%;
+background-color: #ddd;
+}
+
+#Progress_Status {
+  width: 50%;
+  background-color: #ddd;
+}
+
+#myprogressBar {
+  width: 0%;
+  height: 4vh;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 4vh;
+  color: black;
+}
+
+#chart-container {
+    width: 40vw;
+    height: 40vw;
+    background-color: #fff;
+    border: 0.25em solid #47c3d3;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+    padding: 1vw;
+}
+
+.culprit-slice-i {
+    display: inline;
+}
+
+#testchart {
+    width: 90%;
+    height: 90%;
+}
+
+#IngredientsContainer{
+    height: 50vh;
+    overflow: auto;
+}
+
+/* Add a breakpoint at 800px*/
+@media screen and (max-width: 933px) {
+    .left-container {
+        grid-column: 1 / 5;
+        grid-row: 1 / 2;
+    }
+    .right-container {
+        grid-row: 2 / 5;
+        grid-column: 1 / 5;
+        margin: 1vh 0 0 0;
+    }
+    #testchart {
+        width: 90vw;
+        height: 90vw;
+    }
 }
