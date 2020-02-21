@@ -255,11 +255,11 @@ background-color: #ddd;
 }
 
 #myprogressBar {
-  width: 1%;
-  height: 35px;
+  width: 0%;
+  height: 4vh;
   background-color: #4CAF50;
   text-align: center;
-  line-height: 32px;
+  line-height: 4vh;
   color: black;
 }
 
@@ -280,6 +280,11 @@ background-color: #ddd;
 #testchart {
     width: 90%;
     height: 90%;
+}
+
+#IngredientsContainer{
+    height: 50vh;
+    overflow: auto;
 }
 
 /* Add a breakpoint at 800px*/
