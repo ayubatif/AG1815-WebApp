@@ -53,7 +53,9 @@ function handleRecipeNameChange(selected, matrix) {
  * Changes the image based on recipe selection
  */
 function handleImageChange(selected, matrix) {
+  updateProgressBar(matrix);
   coolChart(matrix[selected]);
+  updateCar(matrix);
 }
 
 /*
@@ -119,7 +121,6 @@ function handleIngredientsState(selected, matrix) {
       ingredient_amount.value = this.value+"g";
       ingredient.amount = this.value  ;
       handleImageChange(selected, matrix);
-      updateProgressBar(matrix);
     };
     ingredient_slider_container.appendChild(ingredient_slider);
     ingredient_container.appendChild(ingredient_slider_container);
@@ -129,8 +130,6 @@ function handleIngredientsState(selected, matrix) {
 
     fragment.appendChild(ingredient_container);
   });
-
-  updateProgressBar(matrix);
 
   root_element.appendChild(fragment);
 }
@@ -590,7 +589,13 @@ function getKilometer(matrix)
     }
   }
 
+return totalMealKM;
 
+}
+
+function updateCar(matrix) {
+  elem_km_text = document.getElementById("car-container-km-text");
+  elem_km_text.innerHTML = getKilometer(matrix)+"km driven by a diesel car";
 }
 
  /*
@@ -672,7 +677,7 @@ var weirdChart = function(options) {
           top_3_elements[j].innerHTML = "";
         }
 
-        if (top_culprits_global[0] < 0) {
+        if (top_culprits_global.length < 1) {
           top_3_elements[0].innerHTML = "Nice! All ingredients within Planetary Healh Diet limits!"
         }
         else {

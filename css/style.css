@@ -264,8 +264,8 @@ background-color: #ddd;
 }
 
 #chart-container {
-    width: 40vw;
-    height: 40vw;
+    width: 30vw;
+    height: 30vw;
     background-color: #fff;
     border: 0.25em solid #47c3d3;
     border-radius: 0.5vw;
@@ -287,6 +287,22 @@ background-color: #ddd;
     overflow: auto;
 }
 
+#car-container {
+    width: 40vh;
+    margin-top: 1vh;
+    background-color: #fff;
+    border: 0.25em solid #47c3d3;
+    padding: 1vh;
+}
+
+#car-container-km-text {
+    display: inline;
+}
+
+img {
+    width: 30vh;
+}
+
 /* Add a breakpoint at 800px*/
 @media screen and (max-width: 933px) {
     .left-container {
@@ -298,7 +314,7 @@ background-color: #ddd;
         grid-column: 1 / 5;
         margin: 1vh 0 0 0;
     }
-    #testchart {
+    #chart-container {
         width: 90vw;
         height: 90vw;
     }
