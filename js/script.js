@@ -249,8 +249,6 @@ class Meal {
     this.recipe = 0;
     this.recipe_name = "Meatballs with mashed potatoes and lingonberry jam";
     this.ingredients = chooseIngredientsMeatball();
-   //update.call();
-
   }
 
   /*
@@ -260,7 +258,6 @@ class Meal {
     this.recipe = 1;
     this.recipe_name = "The Planetary Health Wok";
     this.ingredients = chooseIngredientsPlanetaryWok();
-    //update1.call();
   }
 
   /*
@@ -270,7 +267,6 @@ class Meal {
     this.recipe = 2;
     this.recipe_name = "Chicken with bacon and bananas";
     this.ingredients = chooseIngredientsFlyingJacob();
-    //update.call();
   }
 
   /*
@@ -280,7 +276,6 @@ class Meal {
     this.recipe = 3;
     this.recipe_name = "Root vegetable soup";
     this.ingredients = chooseIngredientsRootSoup();
-    //update1.call();
   }
 }
 
@@ -498,59 +493,9 @@ function debug(selected, matrix) {
   }
 }
 
-var width = 20;
-var id = null;
-
-function update() {
-  if (width == 100) {
-      return;
-  }
-
-  var elem = document.getElementById("myprogressBar");
-
-  if (id) {
-      clearInterval(id);
-  }
-
-  id = setInterval(frame, 10);
-
-  function frame() {
-    width ++;
-    elem.style.width = width + '%';
-    elem.innerHTML = width * 1 + '%';
-
-    if (width % 10 == 0) {
-      clearInterval(id);
-    }
-  }
-}
-
-function update1() {
-  var width = 4;
-  var id = null;
-  if (width == 100) {
-      return;
-  }
-
-  var elem = document.getElementById("myprogressBar");
-
-  if (id) {
-      clearInterval(id);
-  }
-
-  id = setInterval(frame, 10);
-
-  function frame() {
-    width ++;
-    elem.style.width = width + '%';
-    elem.innerHTML = width * 1 + '%';
-
-    if (width % 10 == 0) {
-      clearInterval(id);
-    }
-  }
-}
-
+/*
+ * Handles the progress bar
+ */
 function updateProgressBar(matrix)
 {
   ingredients = [
@@ -559,7 +504,7 @@ function updateProgressBar(matrix)
     { ingredient: "Vegetables", greenhouseGas: 3},
     { ingredient: "Fruits", greenhouseGas: 4},
     { ingredient: "Dairy", greenhouseGas: 5},
-    { ingredient: "Beef", greenhouseGas: 6},
+    { ingredient: "Beef", greenhouseGas: 150},
     { ingredient: "Pork", greenhouseGas: 7},
     { ingredient: "Poultry", greenhouseGas: 8},
     { ingredient: "Eggs", greenhouseGas: 9},
@@ -585,32 +530,32 @@ function updateProgressBar(matrix)
     }
   }
 
-  var percentageGas = (totalMealGas/weeklyMaxGas) * 100;
-
-  console.log(percentageGas);
-
-  var width = percentageGas;
-  var id = null;
-  if (width == 100) {
-      return;
-  }
-
+  var percentageGas = Math.floor(totalMealGas/weeklyMaxGas * 100);
   var elem = document.getElementById("myprogressBar");
+  var width = percentageGas;
 
-  if (id) {
-      clearInterval(id);
+  if (width == 0)
+  {
+    elem.style.width = width + '%';
+    elem.innerHTML = 0 + '%';
+  }
+  else if (width >= 100) {
+    width = 100;
+    elem.style.width = width + '%';
+    elem.innerHTML = percentageGas + "%";
+    elem.style.backgroundColor = "#FF0000";
+  }
+  else
+  {
+    width++;
+    elem.style.width = width + '%';
+    elem.innerHTML = width + '%';
+    elem.style.backgroundColor = "#4CAF50";
   }
 
-  id = setInterval(frame, 10);
+  function frame() // I don't know why we need this
+  {
 
-  function frame() {
-    width ++;
-    elem.style.width = width + '%';
-    elem.innerHTML = width * 1 + '%';
-
-    if (width % 10 == 0) {
-      clearInterval(id);
-    }
   }
 }
 
