@@ -589,7 +589,7 @@ function getKilometer(matrix)
     }
   }
 
-return totalMealKM;
+return totalMealKM/100;
 
 }
 
