@@ -558,7 +558,7 @@ function updateProgressBar(matrix)
 
 function getKilometer(matrix)
 {
-  var totalMealGas = 0;
+  var totalMealKM = 0;
 
   ingredients = [
     { ingredient: "Whole Grains", carKilometer: 18},
@@ -586,11 +586,11 @@ function getKilometer(matrix)
     var meal = matrix[i];
     for (let j = 0; j < ingredients.length; j++)
     {
-      totalMealGas += ingredients[j].carKilometer * meal.ingredients[j].amount;
+      totalMealKM += ingredients[j].carKilometer * meal.ingredients[j].amount;
     }
   }
 
-  
+
 }
 
  /*
