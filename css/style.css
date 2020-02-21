@@ -272,6 +272,11 @@ background-color: #ddd;
     margin-top: 1vw;
 }
 
+#IngredientsContainer{
+    height: 50vh;
+    overflow: auto;
+}
+
 /* Add a breakpoint at 800px*/
 @media screen and (max-width: 933px) {
     .left-container {
