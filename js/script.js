@@ -1,3 +1,5 @@
+top_culprits_global = [-1];
+
 /**
  * Toggle between display: none and display:block for recipes list
  */
@@ -578,6 +580,7 @@ var weirdChart = function(options) {
     this.ctx = this.canvas.getContext("2d");
     this.meal = options.meal;
     this.phd_ingredients = options.phd_ingredients;
+    top_culprits_global = [];
 
     this.draw = function() {
         var max_rad_absolute = Math.min(this.canvas.width/2, this.canvas.height/2);
@@ -585,11 +588,15 @@ var weirdChart = function(options) {
         var phd_rad = max_rad_90; // radius of the phd circle is base 100% radius
         for(let i = 0; i < this.phd_ingredients.length; i++) {
             let relative_val = this.meal.ingredients[i].amount / this.phd_ingredients[i].amount;
+            if (relative_val > 1) {
+              top_culprits_global.push(i);
+            }
             // scale phd circle and as a result the rest of the graph
             while ((relative_val * phd_rad) > max_rad_90) {
                 phd_rad = phd_rad * 0.9; // scale the graph by 0.9 whenever elements too big
             }
         }
+
         // draw slices
         var start_angle = 0;
         var slice_angle = 2 * Math.PI * (1 / this.phd_ingredients.length);
@@ -619,6 +626,32 @@ var weirdChart = function(options) {
             true
         )
 
+        // top 3 culprits
+        var top_3_elements = [] 
+        top_3_elements[0] = document.getElementById("culprut-slices-1");
+        top_3_elements[1] = document.getElementById("culprut-slices-2");
+        top_3_elements[2] = document.getElementById("culprut-slices-3");
+        for(let j = 0; j < 3; j++) {
+          top_3_elements[j].innerHTML = "";
+        }
+
+        if (top_culprits_global[0] < 0) {
+          top_3_elements[0].innerHTML = "Nice! All ingredients within Planetary Healh Diet limits!"
+        }
+        else {
+          dumb_meal = this.meal;
+          dumb_phd = this.phd_ingredients;
+          top_culprits_global.sort(function(a, b) {
+            let relative_val_a = dumb_meal.ingredients[a].amount / dumb_phd[a].amount;
+            let relative_val_b = dumb_meal.ingredients[b].amount / dumb_phd[b].amount;
+            return relative_val_b-relative_val_a;
+          })
+          for(let j = 0; (j < top_culprits_global.length) && (j < 3); j++) {
+            top_3_elements[j].innerHTML = this.phd_ingredients[(top_culprits_global[j])].ingredient+" | ";
+            let ingred_color = this.phd_ingredients[(top_culprits_global[j])].color;
+            top_3_elements[j].style.color = ingred_color;
+          }
+        }
     }
 }
 
