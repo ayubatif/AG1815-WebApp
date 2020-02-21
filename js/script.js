@@ -552,11 +552,6 @@ function updateProgressBar(matrix)
     elem.innerHTML = width + '%';
     elem.style.backgroundColor = "#4CAF50";
   }
-
-  function frame() // I don't know why we need this
-  {
-
-  }
 }
 
  /*
