@@ -117,6 +117,7 @@ function handleIngredientsState(selected, matrix) {
       ingredient_amount.value = this.value+"g";
       ingredient.amount = this.value  ;
       handleImageChange(selected, matrix);
+      updateProgressBar(matrix);
     };
     ingredient_slider_container.appendChild(ingredient_slider);
     ingredient_container.appendChild(ingredient_slider_container);
@@ -126,6 +127,8 @@ function handleIngredientsState(selected, matrix) {
 
     fragment.appendChild(ingredient_container);
   });
+
+  updateProgressBar(matrix);
 
   root_element.appendChild(fragment);
 }
@@ -246,8 +249,7 @@ class Meal {
     this.recipe = 0;
     this.recipe_name = "Meatballs with mashed potatoes and lingonberry jam";
     this.ingredients = chooseIngredientsMeatball();
-   update.call();
-
+   //update.call();
 
   }
 
@@ -258,7 +260,7 @@ class Meal {
     this.recipe = 1;
     this.recipe_name = "The Planetary Health Wok";
     this.ingredients = chooseIngredientsPlanetaryWok();
-    update1.call();
+    //update1.call();
   }
 
   /*
@@ -268,7 +270,7 @@ class Meal {
     this.recipe = 2;
     this.recipe_name = "Chicken with bacon and bananas";
     this.ingredients = chooseIngredientsFlyingJacob();
-    update.call();
+    //update.call();
   }
 
   /*
@@ -278,7 +280,7 @@ class Meal {
     this.recipe = 3;
     this.recipe_name = "Root vegetable soup";
     this.ingredients = chooseIngredientsRootSoup();
-    update1.call();
+    //update1.call();
   }
 }
 
@@ -496,8 +498,6 @@ function debug(selected, matrix) {
   }
 }
 
-
-
 var width = 20;
 var id = null;
 
@@ -525,10 +525,6 @@ function update() {
   }
 }
 
-
-
-
-
 function update1() {
   var width = 4;
   var id = null;
@@ -554,6 +550,70 @@ function update1() {
     }
   }
 }
+
+function updateProgressBar(matrix)
+{
+  ingredients = [
+    { ingredient: "Whole Grains", greenhouseGas: 1},
+    { ingredient: "Starchy Vegetables", greenhouseGas: 2},
+    { ingredient: "Vegetables", greenhouseGas: 3},
+    { ingredient: "Fruits", greenhouseGas: 4},
+    { ingredient: "Dairy", greenhouseGas: 5},
+    { ingredient: "Beef", greenhouseGas: 6},
+    { ingredient: "Pork", greenhouseGas: 7},
+    { ingredient: "Poultry", greenhouseGas: 8},
+    { ingredient: "Eggs", greenhouseGas: 9},
+    { ingredient: "Fish", greenhouseGas: 10},
+    { ingredient: "Beans", greenhouseGas: 11},
+    { ingredient: "Soy", greenhouseGas: 12},
+    { ingredient: "Peanuts", greenhouseGas: 13},
+    { ingredient: "Tree Nuts", greenhouseGas: 14},
+    { ingredient: "Palm Oil", greenhouseGas: 15},
+    { ingredient: "Unsaturated Oil", greenhouseGas: 16},
+    { ingredient: "Lard", greenhouseGas: 17},
+    { ingredient: "Sugar", greenhouseGas: 18}
+  ];
+  var totalMealGas = 0;
+  var weeklyMaxGas = 1500 * 21;
+
+  for (let i = 0; i < matrix.length; i++)
+  {
+    var meal = matrix[i];
+    for (let j = 0; j < ingredients.length; j++)
+    {
+      totalMealGas += ingredients[j].greenhouseGas * meal.ingredients[j].amount;
+    }
+  }
+
+  var percentageGas = (totalMealGas/weeklyMaxGas) * 100;
+
+  console.log(percentageGas);
+
+  var width = percentageGas;
+  var id = null;
+  if (width == 100) {
+      return;
+  }
+
+  var elem = document.getElementById("myprogressBar");
+
+  if (id) {
+      clearInterval(id);
+  }
+
+  id = setInterval(frame, 10);
+
+  function frame() {
+    width ++;
+    elem.style.width = width + '%';
+    elem.innerHTML = width * 1 + '%';
+
+    if (width % 10 == 0) {
+      clearInterval(id);
+    }
+  }
+}
+
  /*
  * Draw a cool PHD relative chart
  */
