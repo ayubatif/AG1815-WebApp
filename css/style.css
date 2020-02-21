@@ -245,12 +245,7 @@ body {
 }
 
 #Progress_Status {
-width: 50%;
-background-color: #ddd;
-}
-
-#Progress_Status {
-  width: 50%;
+  width: 90vh;
   background-color: #ddd;
 }
 
@@ -288,7 +283,7 @@ background-color: #ddd;
 }
 
 #car-container {
-    width: 40vh;
+    width: 50vh;
     margin-top: 1vh;
     background-color: #fff;
     border: 0.25em solid #47c3d3;
@@ -318,4 +313,11 @@ img {
         width: 90vw;
         height: 90vw;
     }
+	#Progress_Status {
+		width: 90vw;
+	}
+	#car-container {
+		width: 90vw;
+	}
+	
 }
