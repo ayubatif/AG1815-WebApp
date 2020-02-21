@@ -678,7 +678,7 @@ var weirdChart = function(options) {
         }
 
         if (top_culprits_global.length < 1) {
-          top_3_elements[0].innerHTML = "Nice! All ingredients within Planetary Healh Diet limits!"
+          top_3_elements[0].innerHTML = "Nice! All ingredients within Planetary Health Diet limits!"
         }
         else {
           dumb_meal = this.meal;
