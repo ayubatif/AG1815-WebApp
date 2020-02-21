@@ -556,6 +556,43 @@ function updateProgressBar(matrix)
   }
 }
 
+function getKilometer(matrix)
+{
+  var totalMealGas = 0;
+
+  ingredients = [
+    { ingredient: "Whole Grains", carKilometer: 18},
+    { ingredient: "Starchy Vegetables", carKilometer: 17},
+    { ingredient: "Vegetables", carKilometer: 16},
+    { ingredient: "Fruits", carKilometer: 15},
+    { ingredient: "Dairy", carKilometer: 14},
+    { ingredient: "Beef", carKilometer: 150},
+    { ingredient: "Pork", carKilometer: 12},
+    { ingredient: "Poultry", carKilometer: 11},
+    { ingredient: "Eggs", carKilometer: 10},
+    { ingredient: "Fish", carKilometer: 9},
+    { ingredient: "Beans", carKilometer: 8},
+    { ingredient: "Soy", carKilometer: 7},
+    { ingredient: "Peanuts", carKilometer: 6},
+    { ingredient: "Tree Nuts", carKilometer: 5},
+    { ingredient: "Palm Oil", carKilometer: 4},
+    { ingredient: "Unsaturated Oil", carKilometer: 3},
+    { ingredient: "Lard", carKilometer: 2},
+    { ingredient: "Sugar", carKilometer: 1}
+  ];
+
+  for (let i = 0; i < matrix.length; i++)
+  {
+    var meal = matrix[i];
+    for (let j = 0; j < ingredients.length; j++)
+    {
+      totalMealGas += ingredients[j].carKilometer * meal.ingredients[j].amount;
+    }
+  }
+
+  
+}
+
  /*
  * Draw a cool PHD relative chart
  */
