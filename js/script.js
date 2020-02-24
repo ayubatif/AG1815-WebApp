@@ -202,18 +202,22 @@ class Meal {
   changeRecipe(newRecipe) {
     switch (newRecipe) {
       case 0:
+        this.chooseCustom();
+        break;
+        
+      case 1:
         this.chooseMeatball();
         break;
 
-      case 1:
+      case 2:
         this.choosePlanetaryWok();
         break;
 
-      case 2:
+      case 3:
         this.chooseFlyingJacob();
         break;
 
-      case 3:
+      case 4:
         this.chooseRootSoup();
         break;
     }
@@ -247,8 +251,17 @@ class Meal {
   /*
    * Choose köttbullar
    */
-  chooseMeatball() {
+  chooseCustom() {
     this.recipe = 0;
+    this.recipe_name = "A Custom Recipe";
+    this.ingredients = chooseIngredientsCustom();
+  }
+
+  /*
+   * Choose köttbullar
+   */
+  chooseMeatball() {
+    this.recipe = 1;
     this.recipe_name = "Meatballs with mashed potatoes and lingonberry jam";
     this.ingredients = chooseIngredientsMeatball();
   }
@@ -257,7 +270,7 @@ class Meal {
    * Choose planetary health wok
    */
   choosePlanetaryWok() {
-    this.recipe = 1;
+    this.recipe = 2;
     this.recipe_name = "The Planetary Health Wok";
     this.ingredients = chooseIngredientsPlanetaryWok();
   }
@@ -266,7 +279,7 @@ class Meal {
    * Choose flying jacob
    */
   chooseFlyingJacob() {
-    this.recipe = 2;
+    this.recipe = 3;
     this.recipe_name = "Chicken with bacon and bananas";
     this.ingredients = chooseIngredientsFlyingJacob();
   }
@@ -275,10 +288,38 @@ class Meal {
    * Choose root vegetable soup
    */
   chooseRootSoup() {
-    this.recipe = 3;
+    this.recipe = 4;
     this.recipe_name = "Root vegetable soup";
     this.ingredients = chooseIngredientsRootSoup();
   }
+}
+
+/*
+ * A custom recipe
+ */
+function chooseIngredientsCustom() {
+  ingredients = [
+    { ingredient: "Whole Grains", amount: 0, color: "#000099" },
+    { ingredient: "Starchy Vegetables", amount: 0, color: "#006666" },
+    { ingredient: "Vegetables", amount: 0, color: "#0099cc" },
+    { ingredient: "Fruits", amount: 0, color: "#0033cc" },
+    { ingredient: "Dairy", amount: 0, color: "#669999" },
+    { ingredient: "Beef", amount: 0, color: "#33cccc" },
+    { ingredient: "Pork", amount: 0, color: "#0099ff" },
+    { ingredient: "Poultry", amount: 0, color: "#00ffcc" },
+    { ingredient: "Eggs", amount: 0, color: "#33ccff" },
+    { ingredient: "Fish", amount: 0, color: "#6666ff" },
+    { ingredient: "Beans", amount: 0, color: "#00ff99" },
+    { ingredient: "Soy", amount: 0, color: "#99ccff" },
+    { ingredient: "Peanuts", amount: 0, color: "#cc33ff" },
+    { ingredient: "Tree Nuts", amount: 0, color: "#009900" },
+    { ingredient: "Palm Oil", amount: 0, color: "#99ff66" },
+    { ingredient: "Unsaturated Oil", amount: 0, color: "#ff99cc" },
+    { ingredient: "Lard", amount: 0, color: "#cc0099" },
+    { ingredient: "Sugar", amount: 0, color: "#ff0066" }
+  ];
+
+  return ingredients;
 }
 
 /*
