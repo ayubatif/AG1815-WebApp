@@ -595,7 +595,7 @@ return totalMealKM/100;
 
 function updateCar(matrix) {
   elem_km_text = document.getElementById("car-container-km-text");
-  elem_km_text.innerHTML = getKilometer(matrix)+"km driven by a diesel car";
+  elem_km_text.innerHTML = getKilometer(matrix)+"km driven by a diesel car for this week's meals";
 }
 
  /*
