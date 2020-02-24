@@ -677,6 +677,7 @@ var weirdChart = function(options) {
         top_3_elements[2] = document.getElementById("culprut-slices-3");
         for(let j = 0; j < 3; j++) {
           top_3_elements[j].innerHTML = "";
+          top_3_elements[j].style.color = "#000";
         }
 
         if (top_culprits_global.length < 1) {
