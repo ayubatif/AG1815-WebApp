@@ -83,6 +83,7 @@ function handleIngredientsState(selected, matrix) {
     var ingredient_name = document.createElement("p");
     ingredient_name.className = "ingredient-name";
     ingredient_name.innerHTML = ingredient.ingredient;
+    ingredient_name.style.color = ingredient.color;
 
     var ingredient_slider_container = document.createElement("div");
     ingredient_slider_container.className = "ingredient-slider-container";
@@ -458,6 +459,7 @@ function initializeMatrix(matrix) {
     "#ffffff";
 
   handleIngredientsState(selected, matrix);
+  handleImageChange(selected, matrix);
 }
 
 /*
