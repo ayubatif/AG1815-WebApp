@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>UFC [NAME SUBJECT TO CHANGE]</title>
+    <title>UltraFoodCalculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="css/style.css">
@@ -15,7 +15,7 @@
 <body onload="initializeMatrix(matrix)">
     <div class="main-container">
         <div class="banner-container">
-            <p>UFC [NAME SUBJECT TO CHANGE]</p>
+            <p>AG1815 Food Climate Impact Calculator</p>
         </div>
         <div class="content-container">
             <div class="left-container">
@@ -62,10 +62,11 @@
                     </div>
                     <div id="SearchDropdown" class="hidden">
                         <a id="null">No matching recipes..</a>
-                        <a href="#" onclick="handleRecipesChange(0, selected, matrix)" class="dropdown-recipe">Meatballs with mashed potatoes and lingonberry jam</a>
-                        <a href="#" onclick="handleRecipesChange(1, selected, matrix)" class="dropdown-recipe">The Planetary Health Wok</a>
-                        <a href="#" onclick="handleRecipesChange(2, selected, matrix)" class="dropdown-recipe">Chicken with bacon and bananas</a>
-                        <a href="#" onclick="handleRecipesChange(3, selected, matrix)" class="dropdown-recipe">Root vegetable soup</a>
+                        <a href="#" onclick="handleRecipesChange(0, selected, matrix)" class="dropdown-recipe">A Custom Recipe</a>
+                        <a href="#" onclick="handleRecipesChange(1, selected, matrix)" class="dropdown-recipe">Meatballs with mashed potatoes and lingonberry jam</a>
+                        <a href="#" onclick="handleRecipesChange(2, selected, matrix)" class="dropdown-recipe">The Planetary Health Wok</a>
+                        <a href="#" onclick="handleRecipesChange(3, selected, matrix)" class="dropdown-recipe">Chicken with bacon and bananas</a>
+                        <a href="#" onclick="handleRecipesChange(4, selected, matrix)" class="dropdown-recipe">Root vegetable soup</a>
                     </div>
                 </div>
                 <div id="IngredientsContainer">
@@ -74,7 +75,7 @@
             <div class="right-container">
 
           <div id="Progress_Status">
-              <p>CO2 emissions relative to Planetary Health Diet</p>
+              <p>CO2 emissions relative to Planetary Health Diet for this week's meals</p>
             <div id="myprogressBar">%</div>
          </div>
          <div id="chart-container">
@@ -89,7 +90,7 @@
          <div id="car-container">
             <img src="res/car.png"/>
             <div>
-                <p id="car-container-km-text">??? km driven by a diesel car</p>
+                <p id="car-container-km-text">??? km driven by a diesel car for this week's meals</p>
             </div>
          </div>
         </div>
