@@ -161,12 +161,7 @@ function filterRecipes() {
  * Object that handles the variables of the meals of the days
  */
 class Meal {
-  recipe = null;
-  recipe_name = null;
-  ingredients = null;
-  num_ingredients = 0;
-  picture = null;
-
+  
   /*
    * Default contructor of meal object
    */
@@ -467,9 +462,6 @@ function chooseIngredientsPHD() {
  * Ingredient class holds information on name and amount (maybe food deitary class?)
  */
 class Ingredient {
-  name = null;
-  amount = 0;
-
   constructor(ingredient_name, ingredient_amount) {
     this.name = ingredient_name;
     this.amount = ingredient_amount;
